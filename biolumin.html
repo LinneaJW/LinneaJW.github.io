@@ -1,0 +1,818 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <!-- the following "viewport" tag should be considered mandatory for RWD
+         even if there are no media queries, Google looks for this tag to see
+         if responsive web design is employed on the site (which it should be) -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Bioluminescence.
+      Flexbox and grid layouts both in use. Gallery grid layout is 'one line layout' RAM 
+      (Repeat, Auto, Minmax) providing responsive flow. Grid RAM layout rows may have
+      1, 2, 3, 4 or 5 photos based more on variation of screen size than media queries alone.
+      Dropdown menus with color transitions hovering over desktop/tablet menu items. 
+      Translucent rolldown menu on smartphone with dropdowns. Smartphone display has
+      fontawesome hamburger menu icon and explicitly increased font sizes. Page title has 
+      keyframe animation. Aside links have layered glow effect. Offer cards have border-radius, 
+      box-shadows and scrollbar to handle overflow. Error/confimation icons for form field entry 
+      checks were generated through iconmonstr.com. Form elements have handling/styling for 
+      required, invalid and valid fields, placeholders, reset and submit buttons. Overrode browser 
+      styling to increase size of checkboxes. Textarea grows (transitions) when it gets focus. 
+      Reset and submit buttons have animation when clicked and visual depth. Reset works to clear form, 
+      but submit does not go anywhere. Responsive image display."
+    />
+    <meta
+      name="keywords"
+      content="bioluminescence, bioluminescent, bioluminescent creatures, 
+               bioluminescent plankton, bioluminescent phytoplankton, red tide,
+               blue glow, neon blue glow, what creates bioluminescence, 
+               cause of bioluminescence, causes of biolumninescence"
+    />
+    <meta name="author" content="Linnea Wigren" />
+    <title>Bioluminescence</title>
+    <link href="css/normalize.css" rel="stylesheet" type="text/css" />
+    <link href="css/biolumin.css" rel="stylesheet" type="text/css" />
+
+    <!-- Google font for h1 and h2 Playfair Display -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Google font for body and the rest, except the @font-face directive for some script text -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <!-- script handles the hamburger menu dropdown menu for smartphones -->
+    <script src="js/dialog-9.js"></script>
+  </head>
+
+  <body>
+    <div id="wrapper">
+      <!-- page header contains dropdown menus followed by css animated glow effect page title -->
+      <header class="header">
+        <nav class="navbar">
+          <!-- pertains to smartphone hamburger menu icon, only shown on smartphone,
+               but which combined with JavaScript is an important part of the menu rolldown -->
+          <div class="menu">
+            <a href="#" aria-label="Open the menu"
+              ><i class="fas fa-bars fa-lg" aria-hidden="true"></i
+            ></a>
+          </div>
+
+          <!-- this is the menubar for desktop and tablets, hidden for smartphones -->
+          <div class="links">
+            <ul id="dropdown_top">
+              <li><a href="#">Home</a></li>
+              <li>
+                <a href="#">About Causes</a>
+                <ul class="about">
+                  <li>
+                    <a
+                      href="https://en.wikipedia.org/wiki/Phytoplankton"
+                      target="_blank"
+                      >Phytoplankton</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="https://en.wikipedia.org/wiki/Ostracod"
+                      target="_blank"
+                      >Ostracod Crustaceans</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="https://en.wikipedia.org/wiki/Noctiluca_scintillans#:~:text=Noctiluca%20scintillans%2C%20commonly%20known%20as,(popularly%20known%20as%20mareel)."
+                      target="_blank"
+                      >Noctiluca Scintillans</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="http://www.seasky.org/deep-sea/firefly-squid.html"
+                      target="_blank"
+                      >Firefly Squid</a
+                    >
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <a href="#">Locations</a>
+                <ul class="locations">
+                  <li>
+                    <a
+                      target="_blank"
+                      href="https://www.sandiego.org/plan/visitors-information-services.aspx"
+                      >San Diego</a
+                    >
+                  </li>
+                  <li>
+                    <a target="_blank" href="https://visitmaldives.com/en"
+                      >Maldives</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      target="_blank"
+                      href="https://www.jervisbaytourism.com.au/"
+                      >Jervis Bay</a
+                    >
+                  </li>
+                </ul>
+              </li>
+
+              <li><a href="aurora.html">Aurora Borealis</a></li>
+            </ul>
+          </div>
+
+          <!-- for smartphones -->
+          <div class="dialog">
+            <ol>
+              <li class="menu-item">
+                <a class="noKids" href="#">Home</a>
+              </li>
+
+              <li class="menu-item about">
+                <a href="#" aria-haspopup="true">About Causes</a>
+                <ol class="sub-menu" aria-label="submenu">
+                  <li class="menu-item">
+                    <a
+                      class="noKids"
+                      target="_blank"
+                      href="https://en.wikipedia.org/wiki/Phytoplankton"
+                      >Phytoplankton</a
+                    >
+                  </li>
+                  <li class="menu-item">
+                    <a
+                      class="noKids"
+                      target="_blank"
+                      href="https://en.wikipedia.org/wiki/Ostracod"
+                      >Ostracod Crustaceans</a
+                    >
+                  </li>
+                  <li class="menu-item">
+                    <a
+                      class="noKids"
+                      target="_blank"
+                      href="https://en.wikipedia.org/wiki/Noctiluca_scintillans#:~:text=Noctiluca%20scintillans%2C%20commonly%20known%20as,(popularly%20known%20as%20mareel)"
+                      >Noctiluca Scintillans</a
+                    >
+                  </li>
+                  <li class="menu-item">
+                    <a
+                      class="noKids"
+                      href="http://www.seasky.org/deep-sea/firefly-squid.html"
+                      target="_blank"
+                      >Firefly Squid</a
+                    >
+                  </li>
+                </ol>
+              </li>
+
+              <li class="menu-item resources">
+                <a href="#" aria-haspopup="true">Locations</a>
+                <ol class="sub-menu" aria-label="submenu">
+                  <li class="menu-item">
+                    <a
+                      target="_blank"
+                      class="noKids"
+                      href="https://www.sandiego.org/plan/visitors-information-services.aspx"
+                      >San Diego</a
+                    >
+                  </li>
+                  <li class="menu-item">
+                    <a
+                      class="noKids"
+                      target="_blank"
+                      href="https://visitmaldives.com/en"
+                      >Maldives</a
+                    >
+                  </li>
+                  <li class="menu-item">
+                    <a
+                      class="noKids"
+                      target="_blank"
+                      href="https://www.jervisbaytourism.com.au/"
+                      >Jervis Bay</a
+                    >
+                  </li>
+                </ol>
+              </li>
+
+              <li class="menu-item">
+                <a class="noKids" href="aurora.html">Aurora Borealis</a>
+              </li>
+            </ol>
+          </div>
+        </nav>
+
+        <!-- css animated keyframe page title -->
+        <h1 class="h1_Playfair_Display glow">Bioluminescence</h1>
+        <br />
+      </header>
+
+      <!-- display photos of beach bioluminescence, <picture> will make layout display responsive -->
+      <section class="gallery">
+        <!-- heading above the pictures -->
+        <h2 class="h2_Playfair_Display">
+          Photographs of Bioluminescent Waves and Beaches
+        </h2>
+
+        <div class="photos">
+          <!-- pictures and associated text below -->
+          <div class="responsivePicFrame">
+            <div class="luminPic">
+              <picture>
+                <source
+                  srcset="
+                    img/bioluminescent_waves_scripps_coastal_reserve_600w.jpg
+                  "
+                  media="(min-width: 2400px)"
+                />
+                <source
+                  srcset="
+                    img/bioluminescent_waves_scripps_coastal_reserve_400w.jpg
+                  "
+                  media="(min-width: 400px)"
+                />
+                <img
+                  src="img/bioluminescent_waves_scripps_coastal_reserve_200w.jpg"
+                  alt="bioluminescent waves at Scripps Coastal Reserve"
+                />
+              </picture>
+              <div class="picTxt">Scripps Coastal Reserve</div>
+            </div>
+            <!-- end of div with class luminPic -->
+          </div>
+          <!-- end of div with class responsivePicFrame -->
+
+          <div class="responsivePicFrame">
+            <div class="luminPic">
+              <picture>
+                <source
+                  srcset="img/bioluminescent_waves_blacks_beach_600w.jpg"
+                  media="(min-width: 2400px)"
+                />
+                <source
+                  srcset="img/bioluminescent_waves_blacks_beach_400w.jpg"
+                  media="(min-width: 400px)"
+                />
+                <img
+                  src="img/bioluminescent_waves_blacks_beach_200w.jpg"
+                  alt="bioluminescent waves at Black's Beach"
+                />
+              </picture>
+
+              <div class="picTxt">Black's Beach, San Diego</div>
+            </div>
+            <!-- end of div with class luminPic -->
+          </div>
+          <!-- end of div with class responsivePicFrame -->
+
+          <div class="responsivePicFrame">
+            <div class="luminPic">
+              <picture>
+                <source
+                  srcset="img/bioluminescent_shore_jervis_bay_600w.jpg"
+                  media="(min-width: 2400px)"
+                />
+                <source
+                  srcset="img/bioluminescent_shore_jervis_bay_400w.jpg"
+                  media="(min-width: 400px)"
+                />
+                <img
+                  src="img/bioluminescent_shore_jervis_bay_200w.jpg"
+                  alt="bioluminexcent water on the beach at Jervis Bay"
+                />
+              </picture>
+              <div class="picTxt">Swash at Jervis Bay, Australia</div>
+            </div>
+            <!-- end of div with class luminPic -->
+          </div>
+          <!-- end of div with class responsivePicFrame -->
+
+          <div class="responsivePicFrame">
+            <div class="luminPic">
+              <picture>
+                <source
+                  srcset="img/bioluminescent_shore_2_jervis_bay_600w.jpg"
+                  media="(min-width: 2400px)"
+                />
+                <source
+                  srcset="img/bioluminescent_shore_2_jervis_bay_400w.jpg"
+                  media="(min-width: 400px)"
+                />
+                <img
+                  src="img/bioluminescent_shore_2_jervis_bay_200w.jpg"
+                  alt="bioluminescent water on the beach and rocks at Jervis Bay"
+                />
+              </picture>
+              <div class="picTxt">Jervis Bay, Australia</div>
+            </div>
+            <!-- end of div with class luminPic -->
+          </div>
+          <!-- end of div with class responsivePicFrame -->
+
+          <!-- pictures and associated text below -->
+          <div class="responsivePicFrame">
+            <div class="luminPic">
+              <picture>
+                <source
+                  srcset="img/b_glow-centered_275672977_600.jpg"
+                  media="(min-width: 2400px)"
+                />
+                <source
+                  srcset="img/b_glow-centered_275672977_400.jpg"
+                  media="(min-width: 400px)"
+                />
+                <img
+                  src="img/b_glow-centered_275672977_200.jpg"
+                  alt="bioluminescent plankton at Samut Sakhon, Thailand"
+                />
+              </picture>
+              <div class="picTxt">Samhut Sakhon, Thailand</div>
+            </div>
+            <!-- end of div with class luminPic -->
+          </div>
+          <!-- end of div with class responsivePicFrame -->
+
+          <!-- pictures and associated text below -->
+          <div class="responsivePicFrame">
+            <div class="luminPic">
+              <picture>
+                <source
+                  srcset="img/b_breaking-wave_126888009_600.jpg"
+                  media="(min-width: 2400px)"
+                />
+                <source
+                  srcset="img/b_breaking-wave_126888009_400.jpg"
+                  media="(min-width: 400px)"
+                />
+                <img
+                  src="img/b_breaking-wave_126888009_200.jpg"
+                  alt="bioluminescent wave breaking on the shore"
+                />
+              </picture>
+              <div class="picTxt">Breaking wave</div>
+            </div>
+            <!-- end of div with class luminPic -->
+          </div>
+          <!-- end of div with class responsivePicFrame -->
+
+          <div class="responsivePicFrame">
+            <div class="luminPic">
+              <picture>
+                <source
+                  srcset="img/b_sea-sparkle_233755646_600.jpg"
+                  media="(min-width: 2400px)"
+                />
+                <source
+                  srcset="img/b_sea-sparkle_233755646_400.jpg"
+                  media="(min-width: 400px)"
+                />
+                <img
+                  src="img/b_sea-sparkle_233755646_200.jpg"
+                  alt="sea sparkle at Rokeby, Tasmania, Australia"
+                />
+              </picture>
+              <div class="picTxt">Sea sparkle Rokeby, Tasmania</div>
+            </div>
+            <!-- end of div with class luminPic -->
+          </div>
+          <!-- end of div with class responsivePicFrame -->
+
+          <!-- pictures and associated text below -->
+          <div class="responsivePicFrame">
+            <div class="luminPic">
+              <picture>
+                <source
+                  srcset="img/b_San-Diego-2020_345827910_600.jpg"
+                  media="(min-width: 2400px)"
+                />
+                <source
+                  srcset="img/b_San-Diego-2020_345827910_400.jpg"
+                  media="(min-width: 400px)"
+                />
+                <img
+                  src="img/b_San-Diego-2020_345827910_200.jpg"
+                  alt="glowing water splashing on rock"
+                />
+              </picture>
+              <div class="picTxt">San Diego 2020</div>
+            </div>
+            <!-- end of div with class luminPic -->
+          </div>
+          <!-- end of div with class responsivePicFrame -->
+
+          <!-- pictures and associated text below -->
+          <div class="responsivePicFrame">
+            <div class="luminPic">
+              <picture>
+                <source
+                  srcset="img/b_red-bridge-in-Thailand_296895650_600.jpg"
+                  media="(min-width: 2400px)"
+                />
+                <source
+                  srcset="img/b_red-bridge-in-Thailand_296895650_400.jpg"
+                  media="(min-width: 400px)"
+                />
+                <img
+                  src="img/b_red-bridge-in-Thailand_296895650_200.jpg"
+                  alt="plankton in water at Red Bridge Thailand"
+                />
+              </picture>
+              <div class="picTxt">Red Bridge Thailand</div>
+            </div>
+            <!-- end of div with class luminPic -->
+          </div>
+          <!-- end of div with class responsivePicFrame -->
+
+          <!-- pictures and associated text below -->
+          <div class="responsivePicFrame">
+            <div class="luminPic">
+              <picture>
+                <source
+                  srcset="img/b_red-bridge_243593215_600.jpg"
+                  media="(min-width: 2400px)"
+                />
+                <source
+                  srcset="img/b_red-bridge_243593215_400.jpg"
+                  media="(min-width: 400px)"
+                />
+                <img
+                  src="img/b_red-bridge_243593215_200.jpg"
+                  alt="plankton in water at Red Bridge Thailand another view"
+                />
+              </picture>
+              <div class="picTxt">Red Bridge Thailand</div>
+            </div>
+            <!-- end of div with class luminPic -->
+          </div>
+          <!-- end of div with class responsivePicFrame -->
+
+          <!-- pictures and associated text below -->
+          <div class="responsivePicFrame">
+            <div class="luminPic">
+              <picture>
+                <source
+                  srcset="img/b_water-over-rocks_367244057_600.jpg"
+                  media="(min-width: 2400px)"
+                />
+                <source
+                  srcset="img/b_water-over-rocks_367244057_400.jpg"
+                  media="(min-width: 400px)"
+                />
+                <img
+                  src="img/b_water-over-rocks_367244057_200.jpg"
+                  alt="bioluminescence at Jervis Bay, Australia"
+                />
+              </picture>
+              <div class="picTxt">Jervis Bay, Australia</div>
+            </div>
+            <!-- end of div with class luminPic -->
+          </div>
+          <!-- end of div with class responsivePicFrame -->
+
+          <!-- pictures and associated text below -->
+          <div class="responsivePicFrame">
+            <div class="luminPic">
+              <picture>
+                <source
+                  srcset="img/b_splashing-waves_367244132_600.jpg"
+                  media="(min-width: 2400px)"
+                />
+                <source
+                  srcset="img/b_splashing-waves_367244132_400.jpg"
+                  media="(min-width: 400px)"
+                />
+                <img
+                  src="img/b_splashing-waves_367244132_200.jpg"
+                  alt="more biolumenescence at Jervis Bay, Australia"
+                />
+              </picture>
+              <div class="picTxt">Jervis Bay, Australia</div>
+            </div>
+            <!-- end of div with class luminPic -->
+          </div>
+          <!-- end of div with class responsivePicFrame -->
+        </div>
+        <!-- end of div with class photos -->
+      </section>
+
+      <!-- container holding main story and aside in a row on large enough screens -->
+      <div class="row_M">
+        <!-- main story about bioluminescence and its causes -->
+        <main class="main mainGr">
+          <p class="Montserrat">
+            Biolulminescence, an often neon blue glow, is generated by living
+            organisms. Many beaches in southern California had biolumninescence
+            recently, Playa Del Rey, Manhattan Beach, San Clemente, and Hermosa
+            Beach to name a few. In and near San Diego California this effect
+            usually takes place about every other year. It is created when
+            phytoplankton called dinoflagellates crash in the tide. They react
+            when jostled causing bioluminescence. During the day their
+            pigmentation can make the water deep red, brown or orange - the red
+            tide.
+          </p>
+          <p class="Montserrat">
+            Bioluminesence in Jervis Bay in New South Wales Australia also comes
+            from bioluminescent plankton. They emit a strong blue tinted glow
+            due to a chemical reaction. When red algae are visible in the day,
+            likelihood of bioluminescence in the evening is greater. In Jervis
+            Bay nutrients flow in following rain, which triggers a phytoplankton
+            bloom. A few calm and sunny days after a good rain the
+            bioluminescence should appear at night. Bioluminescence is best
+            observed in total darkness later at night.
+          </p>
+          <p class="Montserrat">
+            Sea sparkle only came to Tasmania in 1994. The neon blooms of
+            Noctiluca scintillans, a type of sea algae, create the
+            bioluminescence here. Their coming is likely due to warmer water
+            from climate change and more polluted water - agricultural and
+            industrial wastewater - with what serve as nutrients to them. They
+            pose a risk to local marine life since blooms of this scale can take
+            all the available nutrients and starve other organisms.
+          </p>
+          <p class="Montserrat">
+            Toyoma Bay in Japan has bioluminescence generated by spawning
+            firefly squid pushed up by a unique current. In the Maldives they
+            have biolumenescence on the beaches created by ostracod crustaceans.
+            Ostracods produce a bright cloud of luminescence much larger than
+            the ostracod itself. This cloud may scare or startle predators.
+            Males use luminescence to attract females. Cypridina serrata eject
+            luciferin and luciferase into sea water, creating the
+            bioluminescence.
+          </p>
+          <p class="Montserrat">
+            Bioluminescence may be other colors, too. And while it is almost
+            non-existent in fresh water, it is not limited to beaches. One
+            bioluminescent fish lights up surrounding water with a red glow in
+            which only it can see, since it's predators and prey cannot see red.
+          </p>
+          <p class="Montserrat">
+            The neon blue glow at the edge of the ocean does not occur every
+            year in San Diego, California. It is seasonal even in the years it
+            occurs. Travel anywhere to see biolumenescence should be contingent
+            on checking likelihood and timing of the phenomenon prior to
+            booking.
+          </p>
+          <br />
+        </main>
+
+        <aside class="side sideGr">
+          <p class="short_quote">
+            &quot;Bioluminescence is a &apos;cold light.&apos; Cold light means
+            less than 20&percnt; of the light generates thermal radiation, or
+            heat.&quot; - National Geographic, link below.
+          </p>
+          <!-- links to articles, css glow on focus/hover from layered text shadows -->
+          <h3>Bioluminescence Articles:</h3>
+          <ul>
+            <li>
+              <a
+                href="http://www.nationalgeographic.org/encyclopedia/bioluminescence"
+                target="_blank"
+                >National Geographic Explains Bioluminescence</a
+              >
+            </li>
+            <li>
+              <a
+                href="https://en.wikipedia.org/wiki/Bioluminescence"
+                target="_blank"
+                >Wikipedia Explains Bioluminescent Creatures</a
+              >
+            </li>
+            <li>
+              <a
+                href="http://www.nbclosangeles.com/news/local/bioluminescence-blue-waves-california-coast-beach-photos/2359338"
+                target="_blank"
+                >NBC Los Angeles, California Beach Photos</a
+              >
+            </li>
+            <li>
+              <a
+                href="http://www.huffpost.com/entry/maldives-beach-bioluminescence_n_5309928"
+                target="_blank"
+                >Maldives Glow in the Dark Beaches</a
+              >
+            </li>
+          </ul>
+        </aside>
+      </div>
+      <!-- end of class row_M div containing main and aside -->
+
+      <div class="offers">
+        <!-- "card" offers -->
+        <div class="cards">
+          <!-- cards representing offers -->
+          <section class="one_card offer1">
+            <h4 class="level">San Diego Tourist</h4>
+            <p class="feature Montserrat">
+              See bioluminescent waves. Amazing when happening!
+            </p>
+            <p class="feature Montserrat">Zoo and more to enjoy!</p>
+            <p class="feature Montserrat">Starting at $2,000</p>
+            <button
+              class="booking"
+              onclick="location.href='https://www.sandiego.org/plan/visitors-information-services.aspx';"
+            >
+              Book Now!
+            </button>
+          </section>
+
+          <section class="one_card offer2">
+            <h4 class="level">Maldives Sightseer</h4>
+            <p class="feature Montserrat">See bioluminescent beaches!</p>
+            <p class="feature Montserrat">
+              Luxurious island resort accomodations!
+            </p>
+            <p class="feature Montserrat">Starting at $8,000</p>
+            <button
+              class="booking"
+              onclick="location.href='https://visitmaldives.com/en';"
+            >
+              Book Now!
+            </button>
+          </section>
+
+          <section class="one_card offer3">
+            <h4 class="level">Down Under Adventurer</h4>
+            <p class="feature Montserrat">See Jervis Bay, Australia!</p>
+            <p class="feature Montserrat">
+              Outdoor adventure on or next to the water!
+            </p>
+            <p class="feature Montserrat">Starting at $20,000</p>
+            <button
+              class="booking"
+              onclick="location.href='https://www.jervisbaytourism.com.au/';"
+            >
+              Book Now!
+            </button>
+          </section>
+        </div>
+        <!-- end of cards div -->
+      </div>
+      <!-- end of div class offers -->
+
+      <!-- "mailing list" form -->
+      <div class="container-form">
+        <form
+          class="contact_form"
+          action="#"
+          method="post"
+          name="contact_form"
+          autocomplete="off"
+        >
+          <ul class="flex-outer">
+            <li>
+              <span class="form-heading">
+                Sign Up for Bioluminescent Event News and Travel Specials
+              </span>
+            </li>
+            <!-- flex-outer li -->
+            <li>
+              <p>Preferred Destination?</p>
+              <ul class="flex-inner">
+                <li>
+                  <input type="checkbox" id="San-Diego" name="San-Deigo" />
+                  <label for="San-Diego">San Diego</label>
+                </li>
+                <li>
+                  <input type="checkbox" id="Maldives" name="Maldives" />
+                  <label for="Maldives">Maldives</label>
+                </li>
+                <li>
+                  <input type="checkbox" id="Australia" name="Australia" />
+                  <label for="Australia">Australia</label>
+                </li>
+              </ul>
+            </li>
+            <!-- flex-outer li -->
+            <li>
+              <label for="first-name">First Name&ast;</label>
+              <input
+                required
+                type="text"
+                id="first-name"
+                name="first-name"
+                placeholder="Enter your first name here"
+                title="Please enter letters of your first name"
+              />
+            </li>
+            <!-- flex-outer li -->
+            <li>
+              <label for="last-name">Last Name&ast;</label>
+              <input
+                required
+                type="text"
+                id="last-name"
+                name="last-name"
+                placeholder="Enter your last name here"
+                title="Please enter your last name"
+              />
+            </li>
+            <!-- flex-outer li -->
+            <li>
+              <label for="email">Email&ast;</label>
+              <input
+                required
+                type="email"
+                id="email"
+                name="email"
+                placeholder="Enter your email here"
+                title="Please enter as address@provider"
+              />
+            </li>
+            <!-- flex-outer li -->
+            <li>
+              <label for="phone">Phone&ast;</label>
+              <input
+                required
+                type="tel"
+                id="phone"
+                name="phone"
+                placeholder="Enter your phone number here"
+                title="Please enter digits, space and hyphen: xxx xxx-xxxx"
+              />
+            </li>
+            <!-- flex-outer li -->
+            <li>
+              <label for="request">Special Requests?</label>
+              <textarea
+                rows="3"
+                id="request"
+                name="request"
+                placeholder="Enter your special request here"
+              ></textarea>
+            </li>
+            <!-- flex-outer li -->
+            <li>
+              <h4>Required fields are marked with an asterisk (&ast;)</h4>
+            </li>
+            <!-- flex-outer li -->
+            <li>
+              <button
+                type="reset"
+                id="reset"
+                name="reset"
+                value="reset"
+                class="btn-reset"
+              >
+                Reset
+              </button>
+            </li>
+            <!-- flex-outer li -->
+            <li>
+              <button
+                type="submit"
+                id="submit"
+                name="submit"
+                value="submit"
+                class="btn-submit"
+              >
+                Submit
+              </button>
+            </li>
+            <!-- flex-outer li -->
+          </ul>
+          <!-- flex-outer -->
+        </form>
+      </div>
+      <!-- container-form -->
+
+      <!-- attribution for bioluminescent photos -->
+      <footer class="footer">
+        <br />
+        <h3>Photo Attributions:</h3>
+        <ul>
+          <li>Kevin Key / stock.adobe.com, Scripps Coastal Reserve</li>
+          <li>Kevin Key / stock.adobe.com, Black's Beach</li>
+          <li>Gary / stock.adobe.com, Jervis Bay, Australia</li>
+          <li>Gary / stock.adobe.com, Jervis Bay, Australia</li>
+          <li>Nattaro / stock.adobe.com, Samhut Sakhon, Thailand</li>
+          <li>EcaterinaLeonte / stock.adobe.com, Breaking Wave</li>
+          <li>
+            Hiroshi Hasobe / stock.adobe.com, Sea sparkle Rokeby, Tasmania
+          </li>
+          <li>Kevin Key / stock.adobe.com, San Diego 2020</li>
+          <li>Sugrit / stock.adobe.com, Red Bridge Thailand</li>
+          <li>Opman / stock.adobe.com, Red Bridge Thailand</li>
+          <li>Gary / stock.adobe.com, Jervis Bay, Australia</li>
+          <li>Gary / stock.adobe.com, Jervis Bay, Australia</li>
+        </ul>
+        <br />
+      </footer>
+      <br />
+    </div>
+    <!-- end of surrounding wrapper div -->
+    <!-- script here to improve load time -->
+    <script
+      src="https://kit.fontawesome.com/086afc5146.js"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

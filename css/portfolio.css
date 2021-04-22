@@ -1,0 +1,139 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+  color: #212121;
+  background-color: #e0f2f1;
+  font-family: "Roboto", sans-serif;
+  font-size: 16px; /* default value anyway */
+  font-weight: 400; /* normal or regular */
+}
+html {
+  direction: ltr;
+} /* Default value ltr for language="en". To ensure flex layout flows as expected. 
+   May affect grid layout (didn't find mention in docs) unlikely to hurt. */
+
+/* Note that box-sizing does NOT include padding in height/width calculations.
+   BUT margins are NOT included */
+* {
+  box-sizing: border-box;
+}
+
+#wrapper {
+  max-width: 86vw;
+  margin: 0 auto 42px auto; /* 4 values: top right bottom left */
+  height: 100%;
+  /* next two lines create 'pancake stack', a one line grid layout
+     for outermost grid which is parent of header, main and footer */
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+}
+
+.h1 {
+  padding: 0.8rem;
+  text-align: center;
+  font-family: "Roboto", sans-serif;
+  font-size: 2.6rem;
+  font-weight: 500;
+  margin: 2rem 0 0 0;
+}
+
+.h2 {
+  text-align: center;
+  margin: 0 0 1.2rem 0;
+  font-family: "Roboto", sans-serif;
+  font-size: 1.75rem;
+  font-weight: 500;
+}
+
+.h3 {
+  text-align: center;
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+/* 'one line' grid layout used for projects
+    RAM (Repeat, Auto, Minmax)
+    grid-template-columns: repeat(auto-fit, minmax(<base>, 1fr)) */
+.project_parent {
+  display: grid;
+  grid-gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  /* minmax initially 150px. Experimenting 300 closer, 400 way off, 280 just right for phones */
+}
+
+.footer {
+  text-align: center;
+  padding: 2rem;
+  color: rgb(20, 20, 131);
+  font-family: "Roboto", sans-serif;
+  font-size: 2.4rem;
+  line-height: calc(1.35 * 2.4rem);
+  font-weight: 500;
+}
+.address {
+  font-size: 1.6rem;
+  line-height: calc(1.35 * 1.8rem);
+  font-weight: 400;
+}
+
+img[alt] {
+  /* Dudley Storey recommends this setting to overcome quality issues with his
+     method of responsive resizing paricularly noticeable in Chrome and Safari */
+  image-rendering: -webkit-optimize-contrast;
+}
+
+.projects {
+  text-align: center;
+  /* outer container, using to center each project */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 4px 24px 24px 24px;
+}
+
+.project {
+  background-color: rgba(
+    119,
+    136,
+    153,
+    0
+  ); /* shouldn't show, transpaarency 0 */
+}
+.single_project {
+  background-color: teal;
+  margin: 0;
+  padding: 0;
+}
+
+.text_left {
+  text-align: left;
+}
+
+/************************* media query for tablet **************************/
+
+@media only screen and (min-width: 481px) and (max-width: 800px) {
+  #wrapper {
+    max-width: 92vw;
+  }
+  .projects {
+    margin: 2px 12px 24px 12px; /* 4 values: top right bottom left */
+  }
+}
+
+/************************** media query for smartphone ***********************/
+
+@media only screen and (max-width: 480px) {
+  #wrapper {
+    max-width: 98vw;
+  }
+  .projects {
+    margin: 2px 4px 12px 4px; /* 4 values: top right bottom left */
+  }
+  .project {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+}

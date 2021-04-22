@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <!-- the following "viewport" tag should be considered mandatory for RWD
+         even if there are no media queries, Google looks for this tag to see
+         if responsive web design is employed on the site (which it should be) -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Linnea Wigren porfolio" />
+    <meta
+      name="keywords"
+      content="aurora, auroras, bioluminescence, bioluminescent, Kanban, Materialize,
+      CSS, HTML, JavaScript, React, Redux, TypeScript, Responsive Web Design, RWD"
+    />
+    <meta name="author" content="Linnea Wigren" />
+    <title>Portfolio of Linnea Wigren</title>
+    <!-- Compiled and minified Materialize CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
+    />
+    <!-- need the Materialize JavaScript for the card reveal -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <!-- Materialize icons -->
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+
+    <!-- Google fonts for large headings, next two links -->
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link href="css/portfolio.css" rel="stylesheet" type="text/css" />
+  </head>
+
+  <body>
+    <div id="wrapper">
+      <!-- page title -->
+      <header>
+        <h1 class="h1 blue-text text-darken-4">Linnea Wigren</h1>
+        <h2 class="h2 blue-text text-darken-4">Projects</h2>
+      </header>
+
+      <main class="project_parent">
+        <div class="projects">
+          <div class="project">
+            <section class="single_project card large">
+              <!-- aurora page -->
+              <span class="card-image waves-effect waves-block waves-light">
+                <img class="activator" src="img/01-aurora_borealis.jpg" />
+              </span>
+              <span class="card-content">
+                <span class="card-title activator cyan-text text-lighten-5"
+                  >Aurora Borealis Info<i
+                    class="material-icons right cyan-text text-lighten-5"
+                    >more_vert</i
+                  ></span
+                >
+                <p>
+                  <a href="aurora.html" class="waves-effect waves-light btn"
+                    >Aurora Borealis</a
+                  >
+                </p>
+              </span>
+              <span class="card-reveal">
+                <span class="card-title grey-text text-darken-4 text_left"
+                  >Aurora Borealis<i
+                    class="material-icons right"
+                    >close</i
+                  ></span
+                >
+                <p class="text_left">
+                  Responsive web design (RWD) with HTML, CSS and JavaScript.
+                  Designed page including coding, animations, curating photos,
+                  researching topic and writing content. For your pleasure,
+                  recommend link to view aurora as seen from the space station.
+                </p>
+                <p>
+                  <a href="aurora.html" class="waves-effect waves-light btn"
+                    >Aurora Borealis</a
+                  >
+                </p>
+                <p class="text_left">
+                  <h3 class="h3">Features:</h3>
+                  grid / flexbox layout &bull; media queries &bull;
+                  keyframe animation &bull; transition animation &bull;
+                  responsive image display &bull;
+                  error/confimation icons for form field
+                  entry &bull; overridden browser checkbox styling 
+                  &bull; hyphenation
+                </p>
+              </span>
+            </section>
+          </div>
+        </div>
+
+        <!-- bioluminescence page -->
+        <div class="projects">
+          <div class="project">
+            <section class="single_project card large">
+              <!-- bioluminescence page -->
+              <span class="card-image waves-effect waves-block waves-light">
+                <img class="activator" src="img/01-bioluminescence.jpg" />
+              </span>
+              <span class="card-content">
+                <span class="card-title activator cyan-text text-lighten-5"
+                  >Bioluminescence Info<i
+                    class="material-icons right cyan-text text-lighten-5"
+                    >more_vert</i
+                  ></span
+                >
+                <p>
+                  <a href="biolumin.html" class="waves-effect waves-light btn"
+                    >bioluminescence</a
+                  >
+                </p>
+              </span>
+              <span class="card-reveal">
+                <span class="card-title grey-text text-darken-4 text_left"
+                  >Bioluminescence<i class="material-icons right"
+                    >close</i
+                  ></span
+                >
+                <p class="text_left">
+                  Responsive web design (RWD) with HTML, CSS and JavaScript.
+                  Designed page including coding, animations, curating photos,
+                  researching topic and writing content.
+                </p>
+                <p>
+                  <a href="biolumin.html" class="waves-effect waves-light btn"
+                    >bioluminescence</a
+                  >
+                </p>
+                <p class="text_left">
+                  <h3 class="h3">Features:</h3>
+                  grid / flexbox layout &bull; media queries &bull;
+                  keyframe animation &bull; transition animation &bull;
+                  responsive image display &bull;
+                  error/confimation icons for form field entry &bull;
+                  overridden browser checkbox styling 
+                  &bull; hyphenation
+                </p>
+              </span>
+            </section>
+          </div>
+        </div>
+
+        <!-- React / Redux / TypeScript discussion -->
+        <div class="projects">
+          <div class="project">
+            <section class="single_project card large">
+              <!-- does not go to a page, but has image -->
+              <span class="card-image waves-effect waves-block waves-light">
+                <img class="activator" src="img/01-kanban_project.jpg" />
+              </span>
+              <span class="card-content">
+                <span class="card-title activator cyan-text text-lighten-5"
+                  >Kanban Board Info<i class="material-icons right"
+                    >more_vert</i
+                  ></span
+                >
+                <!-- no link or button on this one -->
+              </span>
+              <span class="card-reveal">
+                <span class="card-title grey-text text-darken-4 text_left"
+                  >React, Redux and TypeScript Kanban Board<i
+                    class="material-icons right"
+                    >close</i
+                  ></span
+                >
+                <p class="text_left">
+                  Kanban Board class project running through backend to store
+                  Kanban cards on server so that card data is persistent. Cards
+                  in standard categories of To do, In progress and Done remain
+                  available on server. May create, edit, change, change card
+                  categories and delete cards.
+                </p>
+                <p class="text_left">
+                  <h3 class="h3">Familiarity gained with:</h3>
+                  React &bull; Redux &bull; TypeScript
+                  &bull; ImmutableJS &bull; SASS &bull; JSX &bull; Chrome
+                  DevTools &bull; JSON &bull; Postman &bull; Redux-thunk &bull;
+                  Redux-logger
+                </p>
+              </span>
+            </section>
+          </div>
+        </div>
+      </main>
+
+      <footer class="footer">
+        <!-- LinkedIn icon and text both go to LinkedIn page -->
+        <a
+          href="https://www.linkedin.com/in/linneawigren/"
+          class="blue-text text-darken-4"
+          >Linked<i class="fab fa-linkedin blue-text text-darken-4"></i
+        ></a>
+        <br />
+        <address class="address">
+        <a href="mailto:linneajw@gmail.com" class="blue-text text-darken-4"
+          >email Linnea</a
+        >
+        </address>
+        </footer>
+      </footer>
+    </div>
+    <!-- end of wrapper div -->
+    <!-- script here to improve load time -->
+    <script
+      src="https://kit.fontawesome.com/086afc5146.js"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

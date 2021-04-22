@@ -1,0 +1,1350 @@
+/* @font-face directive needs to be at the top; script choices from fontsquirrel */
+@font-face {
+  font-family: "quintessentialregular";
+  src: url("../fonts/quintessential-regular-webfont.woff2") format("woff2"),
+    url("../fonts/quintessential-regular-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  color: #38c5fd;
+  background-color: #002436;
+  font-family: Montserrat, "Trebuchet MS", Verdana, Geneva, sans-serif;
+  font-size: 16px; /* default value anyway */
+  font-weight: 400; /* normal or regular */
+}
+html {
+  direction: ltr;
+} /* Default value ltr for language="en". To ensure flex layout flows as expected. 
+   May affect grid layout (didn't find mention in docs) unlikely to hurt. */
+
+/* Note that box-sizing does NOT include padding in height/width calculations.
+   BUT margins are NOT included */
+* {
+  box-sizing: border-box;
+}
+
+.main,
+.short_quote {
+  /* hyphenation, most of which doesn't apply yet... */
+  -ms-hyphens: auto;
+  -webkit-hyphens: auto;
+  -moz-hyphens: auto;
+  hyphens: auto; /* effect visible on Firefox */
+  -webkit-hyphenate-limit-before: 3; /* legacy property */
+  -webkit-hyphenate-limit-after: 3; /* legacy property */
+  -webkit-hyphenate-limit-chars: 6 3 3;
+  -ms-hyphenate-limit-chars: 6 3 3; /* so far only supports -ms- prefix */
+  -moz-hyphenate-limit-chars: 6 3 3;
+  /* hypenate-limit-chars: 6 3 3; not yet supported 
+     first value minimum character limit for a word to be hyphenated; 
+     second is minimum number of characters before the hyphenation break; 
+     last is minimum characters after the hyphenation break. */
+  -ms-hyphenate-limit-lines: 2;
+  -webkit-hyphenate-limit-lines: 2;
+  -moz-hyphenate-limit-lines: 2;
+  /* hyphenate-limit-lines: 2; not yet supported
+     limits number of consecutive hyphenated lines */
+  -webkit-hyphenate-limit-last: always;
+  -moz-hyphenate-limit-last: always;
+  -ms-hyphenate-limit-last: always;
+  /* hyphenate-limit-last: always; not yet supported
+    limits hyphenation to stop breaking the last word onto the last line */
+  -webkit-hyphenate-limit-zone: 8%;
+  -moz-hyphenate-limit-zone: 8%;
+  -ms-hyphenate-limit-zone: 8%;
+  /* hyphenate-limit-zone: 8%; not yet supported
+    Hyphenation-limit-zone property takes a length or a percentage value 
+    (in terms of the width of the text box). For responsive design, it makes most 
+    sense to set your hyphenation zone as a percentage. Doing so means you would 
+    get a smaller hyphenation zone on smaller screens, leading to more hyphenation 
+    and less rag. Conversely on wider screens you would get a broader hyphenation 
+    zone, hence less hyphenation and more rag, which a wider measure would be 
+    better able to accommodate. */
+}
+
+#wrapper {
+  max-width: 85vw; /* changed from width to max-width,  85% to 85vw */
+  margin: 0 auto 42px auto; /* 4 values: top right bottom left */
+  height: 100%;
+}
+.navbar {
+  /* invisible top level navigation container */
+  max-width: 100%;
+  height: auto;
+  text-align: center;
+  padding: 0;
+  margin: 0 2vw 72px 2vw;
+}
+
+/* dropdown to the navigation bar at the top */
+#dropdown_top {
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  width: 100%;
+  /* Bring the nav above everything else--uncomment if needed. 
+  position: relative;
+  z-index: 5; */
+}
+#dropdown_top li {
+  margin: 0;
+  width: auto;
+  /* padding makes a bold line around the top level menu item when submenu appears.
+     The link <a> fills most of the box and loses the focus. Some quirk seems to cause
+     the list item to retain focus so taking advantage of this making it appear as thick line */
+  padding: 0.08rem;
+  position: relative;
+  color: #38c5fd;
+  background-color: #002436;
+  border: 1px solid #38c5fd; /* shorthand: width, style, color */
+}
+#dropdown_top a {
+  display: block;
+  /* border here looked bad since link-<a> smaller than <div>/<li> holding it */
+  padding: 3px 1.75rem 3px 1.75rem;
+  text-decoration: none;
+  color: #38c5fd;
+  background-color: #002436;
+  white-space: nowrap; /* Stop text wrapping from creating multi-line dropdown items */
+  font-family: Montserrat, "Trebuchet MS", Verdana, Geneva, sans-serif;
+  font-size: 1rem;
+}
+#dropdown_top ul {
+  /* Adding a background makes dropdown work in IE7+. Make close to page background. 
+     Background close to transparent, making it close to invisible */
+  background-color: rgba(0, 56, 34, 0);
+  color: #38c5fd;
+  list-style: none;
+  position: absolute;
+  /* Hide off-screen when not needed. This is more accessible than display:none; */
+  left: -9999px;
+}
+
+/* explicit styling for submenus to fit widest text */
+/* 3-28-21 #dropdown_top .resources .locations li { */
+#dropdown_top .locations li {
+  width: 150px;
+  text-align: left;
+}
+#dropdown_top .about li {
+  width: 216px;
+  text-align: left;
+}
+
+#dropdown_top li:hover ul {
+  /* Display the dropdown on hover */
+  left: 0; /* Bring back on-screen when needed */
+}
+#dropdown_top li ul li {
+  margin: 1px 0 1px 0;
+}
+
+/* drop down menu and submenu items used for desktop and tablet */
+#dropdown_top li:hover,
+li:focus {
+  color: #002436;
+  background-color: #38c5fd;
+  transition: 1s; /* to fade instead of pop in */
+}
+#dropdown_top li:not(:hover),
+li:not(:focus) {
+  color: #38c5fd;
+  background-color: #002436;
+  transition: 0.01ms;
+}
+/* seems to need this set on both li and a, separately to work */
+#dropdown_top a:hover,
+a:focus {
+  color: #002436;
+  background-color: #38c5fd;
+  -moz-transition: 1s; /* vendor prefixes did not seem to make a difference on 'a' */
+  -webkit-transition: 1s; /* added anyway 3-28-21 */
+  transition: 1s; /* to fade instead of pop in */
+}
+#dropdown_top a:not(:hover),
+a:not(:focus) {
+  color: #38c5fd;
+  background-color: #002436;
+  -moz-transition: 0.01ms; /* vendor prefixes added 3-28-21 */
+  -webkit-transition: 0.01ms;
+  transition: 0.01ms;
+}
+
+.links {
+  /* this is the whole horizontal nav row desktop/laptop, itself not visible */
+  margin: 0;
+  display: flex;
+}
+
+/* turning off display of separately defined smartphone menu, submenus */
+.menu {
+  display: none;
+}
+.dialog {
+  display: none;
+}
+
+.header {
+  max-width: 100%; /* seemed to help making flex work as intended */
+  text-align: center;
+  padding: 0 0.5rem 0.5rem 0.5rem;
+}
+.header h1 {
+  text-align: center;
+}
+.h1_Playfair_Display {
+  font-family: "Playfair Display", Garamond, Georgia, serif;
+  font-size: 48px;
+  font-weight: 600;
+  margin: 0.2rem 2rem;
+  color: #fff;
+}
+
+.gallery {
+  width: 100%;
+  text-align: center;
+  padding: 2rem;
+  color: #38c5fd;
+}
+.gallery h2 {
+  padding: 0.2rem;
+}
+.gallery .h2_Playfair_Display {
+  font-family: "Playfair Display", Garamond, Georgia, serif;
+  font-size: 1.5rem;
+  line-height: calc(1.35 * 1.5rem);
+  font-weight: 500;
+}
+
+img[alt] {
+  /* Dudley Storey recommends this setting to overcome quality issues with his
+     method of responsive resizing paricularly noticeable in Chrome and Safari */
+  image-rendering: -webkit-optimize-contrast;
+}
+
+/************** styles for the photos of bioluminescence ***************/
+
+.photos {
+  width: 100%;
+  height: auto;
+  padding: 0;
+}
+
+div.luminPic {
+  width: 100%;
+}
+div.luminPic img {
+  border: 1px solid #38c5fd;
+  width: 100%;
+  height: auto;
+}
+div.picTxt {
+  margin: 2px 4px;
+  text-align: left;
+  color: #38c5fd;
+  font-size: 0.9rem;
+  line-height: calc(1.25 * 0.9rem);
+}
+.responsivePicFrame {
+  padding: 6px 6px;
+  /* next 2 lines needed for flex layout, removed for grid
+  float: left;
+  width: 24.99999%; */
+}
+
+/* following grid areas defined for grid display of .row_M */
+.mainGr {
+  grid-area: mainG;
+}
+.sideGr {
+  grid-area: sideG;
+}
+/* following grid areas defined for grid display of offer - cards */
+.offer1 {
+  grid-area: offr1;
+}
+.offer2 {
+  grid-area: offr2;
+}
+.offer3 {
+  grid-area: offr3;
+}
+
+.row_M {
+  width: 100%;
+  height: auto;
+  padding: 1.6rem;
+  background-color: #002436;
+  /* these will apply to .main and .aside through inheritance */
+  font-weight: 400;
+  font-size: 1.15rem;
+  /* MDN web docs says % line-height can be unreliable
+    percent I calculated as line-height proved this true, wasn't applied */
+  line-height: calc(1.25 * 1.15rem);
+}
+
+.main {
+  background-color: #002436;
+  color: #38c5fd;
+  /* with previous flexbox layout needed width: 74.9999%; */
+  height: 100%;
+  /* NO MARGIN it will mess it up here */
+}
+.main p {
+  text-align: left; /* justify puts too much space between words even on desktop */
+  margin: 0 0.5rem 0.75rem 0.5rem;
+  padding: 0 0 1rem 0; /* 4 values: top right bottom left padding and margin */
+}
+
+/* Google font */
+.Montserrat {
+  font-family: Montserrat, "Trebuchet MS", Verdana, Geneva, sans-serif;
+}
+
+.side {
+  /* with previous flexbox layout needed width: 24.99999%; */
+  height: 100%;
+  color: #38c5fd;
+  background-color: #002436;
+  margin-top: 0;
+  padding: 0 0.1rem 0.5rem 0.25rem;
+  font-weight: 400;
+  font-size: 1.05rem;
+  line-height: calc(1.25 * 1.05rem);
+}
+.side h3 {
+  text-align: center;
+  padding: 3.5rem 0.5rem 0.2rem 0.25rem; /* 4 values: top right bottom left */
+  font-size: 1.2rem;
+  line-height: calc(1.25 * 1.2rem);
+  /* loaded 400, 600 weights - saw difference specifying weight in h3 
+     rather than letting browser make these bold less crisply  */
+  font-weight: 600;
+}
+.side ul {
+  list-style: none;
+}
+.side ul li {
+  padding: 0.5rem 0;
+}
+.side p {
+  text-align: left;
+  padding: 0;
+  margin: 0 0.1rem 0.2rem 0.25rem;
+  font-weight: 400;
+}
+.short_quote {
+  /* this font is from the @font-face rule */
+  font-family: "quintessentialregular", script;
+  font-size: 1.3rem;
+  line-height: calc(1.6 * 1.3rem);
+}
+
+.footer {
+  max-width: 100%;
+  text-align: left;
+  padding: 0 0 1.6rem 1.6rem; /* 4 values: top right bottom left */
+  height: auto;
+  color: #38c5fd;
+  background-color: #002436;
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: calc(1.25 * 1rem);
+}
+
+.footer h3 {
+  width: 100%;
+  text-align: left;
+  padding: 0 0.5rem 0.2rem 0.25rem; /* 4 values: top right bottom left */
+  font-size: 1.1rem;
+  line-height: calc(1.25 * 1.1rem);
+  font-weight: 600;
+}
+
+.footer ul {
+  list-style: none;
+}
+
+.footer ul li {
+  padding: 0.25rem 0;
+}
+
+/****** styling for links in aside, including animated text-shadow *******/
+
+.side a:link {
+  text-align: left;
+  color: #38c5fd;
+  text-decoration: none;
+}
+.side a:visited {
+  color: #38c5fd;
+  text-decoration: none;
+}
+/* note that the comma separated values on this text shadow 
+   build layers, not an animation */
+.side a:hover,
+.side a:focus {
+  color: white;
+  text-decoration: none;
+  text-shadow: 0 0 4px rgba(17, 229, 236, 0.92),
+    0 0 10px rgba(11, 233, 233, 0.34), 0 0 6px rgba(30, 175, 242, 0.52),
+    0 0 9px rgba(30, 200, 242, 0.92), 0 0 11px rgba(30, 217, 242, 0.78),
+    0 0 16px rgba(30, 228, 242, 0.92);
+}
+.side a:active {
+  color: white;
+  text-decoration: none;
+}
+
+/******************* offer cards ******************/
+
+.offers {
+  max-width: 100%;
+  height: 100%;
+  text-align: center;
+  margin: 0 2rem;
+  /* outer container for offer cards, using to center offer card container .cards */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.cards {
+  width: 88%;
+  /* flexbox display */
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.one_card {
+  margin: 0.25rem 1.5rem 2rem 1.5rem;
+  padding: 0.5rem;
+  border-radius: 12px;
+  overflow: auto; /* change value to scroll to test scroll appearance */
+  width: 19vw;
+  height: 20.5rem;
+  color: #142b77;
+  background-color: #38c5fd;
+}
+.one_card .level {
+  background-color: #fff;
+  color: #270f92;
+  font-family: "Playfair Display", Garamond, Georgia, serif;
+  font-size: 1.4rem;
+  line-height: calc(1.25 * 1.4rem);
+  font-weight: 600;
+  padding: 0.4rem 0.25rem;
+  margin: 0.5rem 1rem 1.75rem 1rem;
+  border-radius: 8px;
+  position: relative;
+  box-shadow: 8px 8px 10px 6px rgba(33, 42, 124, 0.44);
+}
+.one_card .feature {
+  text-align: center;
+  font-weight: 600;
+  font-size: 1rem;
+  line-height: calc(1.25 * 1rem);
+}
+.booking {
+  font-size: 1rem;
+  line-height: calc(1.25 * 1rem);
+  font-weight: 600;
+  width: 50%;
+  padding: 12px 4px;
+  margin: 0 0 12px 0;
+  border: 1px solid transparent;
+  /* transparent value set to avoid border taking color of text by default, 
+     to stop border display on hover */
+  border-radius: 7px;
+  background-color: #084766;
+  color: #fff;
+  box-shadow: 6px 6px 8px 4px rgba(33, 42, 124, 0.44);
+  cursor: pointer;
+}
+.booking:hover,
+.booking:focus {
+  background-color: #fff;
+  color: #084766;
+}
+
+/******************* Form ********************/
+
+/* changing the color of the placeholder text */
+:-moz-placeholder {
+  color: blue;
+}
+::-webkit-input-placeholder {
+  color: blue;
+}
+:-ms-input-placeholder {
+  /* Internet Explorer 10-11 */
+  color: blue;
+}
+::-ms-input-placeholder {
+  /* Microsoft Edge */
+  color: blue;
+}
+/*  Remove input autofocus  */
+*:focus {
+  outline: none;
+}
+
+.container-form {
+  width: 80%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.contact_form {
+  margin: 0;
+}
+.form-heading {
+  text-align: left;
+  margin: 2rem 0 0.2rem 0;
+  font-size: 1.5em;
+  font-weight: 600;
+}
+.flex-inner h4 {
+  margin: 0;
+  font-weight: 400;
+  font-size: 1.2rem;
+  line-height: calc(1.25 * 1.2rem);
+}
+.flex-outer,
+.flex-inner {
+  list-style-type: none;
+  padding: 0;
+}
+.flex-outer {
+  max-width: 800px;
+  margin: 0 auto;
+}
+/* Setting up the Flexbox Parent */
+.flex-outer li,
+.flex-inner {
+  display: -webkit-box;
+  display: -ms-flexbox; /* for older IE versions */
+  display: flex; /* causes an element to generate a block-level flex container box.*/
+  -ms-flex-wrap: wrap; /* for older IE versions */
+  flex-wrap: wrap; /* controls whether the flex container is single-line or multi-line, 
+  and the direction of the cross-axis, which determines the direction new lines are stacked in. */
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center; /* aligned in the cross axis of the current line of the flex container, 
+  similar to justify-content but in the perpendicular direction. So aligning center, the 
+  flex item’s margin box is centered in the cross axis within the line. (If the cross size of the 
+  flex line is less than that of the flex item, it will overflow equally in both directions.) */
+}
+.flex-inner {
+  padding: 0 8px;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between; /*The justify-content property aligns flex items along the 
+  main axis of the current line of the flex container. */
+}
+
+/* margins for form fields and buttons */
+.flex-outer > li {
+  margin-bottom: 20px;
+}
+/* last input field */
+.flex-outer > li:nth-child(7) {
+  margin: 0;
+}
+/* meaning of asterisks */
+.flex-outer > li:nth-child(8) {
+  margin: 0;
+}
+/* reset button */
+.flex-outer > li:nth-child(9) {
+  margin: 12px 0 36px 0;
+}
+/* submit button  */
+.flex-outer > li:last-child {
+  margin: 0 0 2rem 0;
+}
+/* labels */
+.flex-outer li label,
+.flex-outer li p {
+  padding: 8px;
+  font-weight: 400;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+}
+/* To control the size or width of these areas use the flex property 
+   to set the flex-grow, flex-shrink and flex-basis properties */
+.flex-outer > li > label,
+.flex-outer li p {
+  -webkit-box-flex: 1;
+  -ms-flex: 1 0 120px;
+  flex: 1 0 120px; /* flex-grow, flex-shrink, flex-basis */
+  max-width: 220px;
+}
+/* The flex property makes it 'responsive' so when the browser 
+   window is resized, the elements reflow */
+
+/* Styling the form fields:
+   Use child and sibling selectors to style form elements 
+   with the flex property for flex-grow and flex-basis */
+.flex-outer > li > label + *,
+.flex-inner {
+  -webkit-box-flex: 1;
+  -ms-flex: 1 0 220px;
+  flex: 1 0 220px;
+}
+.flex-outer li p {
+  margin: 0;
+}
+/* Make form field larger (but not the checkboxes!) */
+.flex-outer li input:not([type="checkbox"]),
+.flex-outer li textarea {
+  padding: 8px;
+  border: 2px solid #38c5fd;
+  border-radius: 4px;
+}
+
+/* per MDN: Styling a checkbox or a radio button is tricky by default. 
+   The sizes of check boxes and radio buttons are not meant to be changed with 
+   their default designs, and browsers react very differently when you try. */
+.flex-outer li input[type="checkbox"] {
+  -webkit-appearance: none;
+  appearance: none; /* removing default browser behavior */
+  padding: 8px; /* used to enlarge the box  */
+  border-radius: 4px;
+  position: relative; /* need this for ::before and ::after pseudo-classes */
+  width: 1em; /* width, height 1em starting point for mdn sizing */
+  height: 1em;
+  border: 2px solid #38c5fd;
+  /* Adjusts the position of the checkboxes on the text baseline */
+  /* vertical-align: -2px; <-- no affect perhaps due  to flexbox layout */
+  /* Set color here so that Windows' High-Contrast Mode can override */
+  background-color: white;
+  color: #002436;
+}
+input[type="checkbox"]::before {
+  content: "✔";
+  position: absolute;
+  font-size: 1.2em;
+  right: -1px;
+  top: -0.3em;
+  visibility: hidden;
+}
+input[type="checkbox"]:checked::before {
+  /* Use `visibility` instead of `display` to avoid recalculating layout */
+  visibility: visible;
+}
+
+/********* Styling the reset and submit buttons *********/
+
+.flex-outer li button {
+  margin-left: auto;
+  padding: 8px 16px;
+  border-left: 4px solid #8ed9f7;
+  border-top: 4px solid #8ed9f7;
+  border-right: 4px solid #0f6b8f;
+  border-bottom: 4px solid #0f6b8f;
+  background: #38c5fd;
+  color: #002436;
+  text-transform: uppercase;
+  font-weight: 600;
+  letter-spacing: 0.09em;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+/* reset button */
+.btn-reset {
+  position: relative;
+  background-color: #1221f3;
+  border: none;
+  padding: 20px;
+  width: 200px;
+  text-align: center;
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
+  text-decoration: none;
+  overflow: hidden;
+}
+.btn-reset:hover {
+  background: #fff;
+  box-shadow: 0px 2px 10px 5px #97b1bf;
+  color: #002448;
+}
+.btn-reset:after {
+  content: "";
+  background: #0f84f1;
+  display: block;
+  position: absolute;
+  padding-top: 300%;
+  padding-left: 350%;
+  margin-left: -20px !important;
+  margin-top: -120%;
+  opacity: 0;
+  transition: all 0.8s;
+}
+.btn-reset:active:after {
+  padding: 0;
+  margin: 0;
+  opacity: 1;
+  transition: 0s;
+}
+
+/* submit button */
+.btn-submit {
+  position: relative;
+  background-color: #1221f3;
+  border: none;
+  padding: 20px;
+  width: 200px;
+  text-align: center;
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
+  text-decoration: none;
+  overflow: hidden;
+}
+.btn-submit:hover {
+  background: #fff;
+  box-shadow: 0px 2px 10px 5px #97b1bf;
+  color: #002448;
+}
+.btn-submit:after {
+  content: "";
+  background: #0f84f1;
+  display: block;
+  position: absolute;
+  padding-top: 300%;
+  padding-left: 350%;
+  margin-left: -20px !important;
+  margin-top: -120%;
+  opacity: 0;
+  transition: all 0.8s;
+}
+.btn-submit:active:after {
+  padding: 0;
+  margin: 0;
+  opacity: 1;
+  transition: 0s;
+}
+
+/* make <textarea> element grow when it get focus, unsure why but didn't work with input element */
+.contact_form textarea:focus {
+  padding-top: 25px;
+}
+/* this “transition” property adds a little pizzazz to form */
+.contact_form textarea {
+  -moz-transition: padding 0.25s;
+  -webkit-transition: padding 0.25s;
+  -o-transition: padding 0.25s;
+  transition: padding 0.25s;
+}
+
+/* Indicate input is valid for required input */
+.contact_form input:required:valid {
+  /* when a field is considered valid by the browser */
+  background: #fff no-repeat 98% center
+    url(../img/iconmonstr-check-mark-4-24.png);
+  box-shadow: 0 0 7px #15aa8a;
+  border-color: #15aa8a;
+}
+/* Indicate invalid input for required input */
+.contact_form input:required:focus:invalid {
+  /* when a field is considered invalid by the browser */
+  background: #fff no-repeat 98% center url(../img/iconmonstr-x-mark-4-24.png);
+  box-shadow: 0 0 7px #96142a;
+  border-color: #96142a;
+}
+
+/* previous w flexbox layouts 
+.row_M {
+  display: flex;
+  width: 100%;
+}
+.row_M > .main {
+  order: 1;
+  width: 74.99999%;
+}
+.row_M > .side {
+  order: 2;
+  width: 24.99999%;
+}
+
+.photos {
+  display: flex;
+  flex-flow: row wrap;
+  width: 100%;
+} */
+
+/* grid layouts */
+.photos {
+  display: grid;
+  grid-gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+.row_M {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-areas: "mainG mainG mainG sideG";
+}
+.cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-areas: "offr1 offr2 offr3";
+  /* from previous flex layout
+  justify-items: center;
+  align-items: center; */
+}
+
+/* placing the footer below the offers with flexbox */
+#wrapper {
+  display: flex;
+  flex-flow: column;
+}
+.offers {
+  order: 0;
+  height: 100%;
+}
+.footer {
+  order: 1;
+  align-self: flex-start;
+}
+
+/************************* media query for tablet **************************/
+
+@media only screen and (min-width: 481px) and (max-width: 800px) {
+  #wrapper {
+    max-width: 92vw;
+  }
+  .navbar {
+    margin: 0 2vw 42px 2vw;
+  }
+  .dialog {
+    display: none;
+  }
+  .links {
+    margin: 0;
+  }
+
+  #dropdown_top li {
+    margin-left: 4px;
+  }
+  #dropdown_top a {
+    padding: 3px;
+    font-size: 0.75rem;
+  }
+  #dropdown_top li ul li {
+    padding: 0 4px;
+  }
+
+  /* explicit styling for each submenu to fit widest text */
+  #dropdown_top .locations li {
+    width: 120px;
+    text-align: left;
+  }
+  #dropdown_top .about li {
+    width: 170px;
+    text-align: left;
+  }
+
+  .main {
+    width: 100%;
+  }
+  .h1_Playfair_Display {
+    font-size: 2.5rem;
+  }
+  .gallery .h2_Playfair_Display {
+    font-family: "Playfair Display", Garamond, Georgia, serif;
+    text-align: center;
+    font-size: 1.3rem;
+    line-height: calc(1.25 * 1.3rem);
+    font-weight: 500;
+    padding: 0;
+    margin: 0 1rem;
+  }
+  .responsivePicFrame {
+    /* width: 49.99999%; worked with flexbox layout */
+    padding: 6px;
+  }
+  div.picTxt {
+    font-size: 0.8rem;
+    line-height: calc(1.25 * 0.8rem);
+  }
+  .row_M {
+    width: 100%;
+    height: auto; /* needed to make the footer behave */
+    font-size: 1rem;
+    /* MDN web docs says % line-height can be unreliable
+    percent I calculated as line-height proved this true, wasn't applied */
+    line-height: calc(1.25 * 1rem);
+  }
+  .main p {
+    width: 100%;
+    margin: 0 0.25rem 0.25rem 0.25rem;
+    padding: 0 0 0.5rem 0; /* 4 values: top right bottom left padding and margin */
+  }
+  .side {
+    width: 100%;
+  }
+  .side h3 {
+    text-align: left;
+    padding: 0 0;
+    font-size: 0.95rem;
+  }
+  .side p {
+    text-align: left;
+    margin: 4rem 0 2rem 0;
+  }
+  .short_quote {
+    width: 100%;
+    font-size: 1.15rem;
+    line-height: calc(1.6 * 1.15rem);
+  }
+  .side ul li {
+    text-align: left;
+    width: 100%;
+    height: auto;
+    padding: 0.6rem 0;
+    font-size: 1rem;
+    line-height: calc(1.25 * 1rem);
+  }
+  .footer {
+    width: 100%;
+  }
+  .footer h3 {
+    text-align: left;
+    padding: 0.3rem 0;
+    font-size: 0.9rem;
+  }
+  .footer ul li {
+    text-align: left;
+    width: 100%;
+    padding: 0.5rem 0;
+    font-size: 0.85rem;
+    line-height: calc(1.25 * 0.85rem);
+  }
+
+  /******* offer cards for tablet *******/
+  .offers {
+    max-width: 100%;
+    height: 100%;
+    margin: 0 2rem;
+  }
+
+  .cards {
+    /* from flexbox layout
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center; */
+    width: 100%;
+  }
+  .one_card {
+    margin: 0.25rem 1.25rem 2rem 1.25rem;
+    padding: 0.5rem;
+    border-radius: 12px;
+    overflow: auto; /* change value to scroll to test scroll appearance */
+    width: 21vw;
+    height: 22rem;
+  }
+  .one_card .level {
+    font-family: "Playfair Display", Garamond, Georgia, serif;
+    font-size: 1.2rem;
+    line-height: calc(1.25 * 1.2rem);
+    padding: 0.4rem 0.25rem;
+    margin: 0.25rem 0.5rem 1.75rem 0.5rem;
+    border-radius: 8px;
+    box-shadow: 8px 8px 10px 6px rgba(33, 42, 124, 0.44);
+  }
+  .one_card .feature {
+    font-size: 0.9rem;
+    line-height: calc(1.25 * 0.9rem);
+  }
+  .booking {
+    font-size: 0.9rem;
+    line-height: calc(1.25 * 0.9rem);
+    width: 50%;
+    padding: 12px 4px;
+    margin: 0 0 12px 0;
+    border-radius: 7px;
+    box-shadow: 6px 6px 8px 4px rgba(33, 42, 124, 0.44);
+  }
+
+  /* grid layout */
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-areas: "offr1 offr2 offr3";
+  }
+
+  /* Flexbox layout */
+  .row_M {
+    display: flex;
+    flex-flow: column;
+  }
+  /* return to document order */
+  .row_M > .main,
+  .row_M > .side {
+    order: 0;
+    width: 100%;
+  }
+
+  /* placing the footer below the offers with flexbox */
+  #wrapper {
+    display: flex;
+    flex-flow: column;
+  }
+  .offers {
+    order: 0;
+    height: 100%;
+  }
+  .footer {
+    order: 1;
+    align-self: flex-end;
+  }
+} /* end of media query for tablet */
+
+/************************** media query for smartphone ***********************/
+
+@media only screen and (max-width: 480px) {
+  #wrapper {
+    max-width: 96vw;
+  }
+  /* hide the links for desktop and tablets */
+  nav .links {
+    display: none;
+  }
+  .navbar {
+    margin: 0 2vw 42px 2vw;
+  }
+
+  /************ style the smartphone navigation that will open and close ***********/
+  nav .menu {
+    /* this contains the hamburger menu icon */
+    display: flex;
+    padding: 1rem;
+  }
+  /* this is scroll down menu */
+  .dialog {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    /* translucent value to come over page */
+    background-color: rgba(44, 177, 230, 0.644);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-100%);
+    transition: all 500ms ease-in;
+    z-index: 1; /* needed to fix problem with offer .level showing on top */
+  }
+  .dialog.open {
+    visibility: visible;
+    opacity: 1;
+    transform: translateY(0%);
+  }
+  .dialog a {
+    text-decoration: none;
+  }
+
+  /* noKids for use with JavaScript so that only links without children close the dialog, 
+     which rolls up with the Home menu choice, others do not close or roll up the dialog,
+     the desired behavior */
+  .noKids {
+    text-align: center;
+  }
+
+  /******** menu and submenu for smartphone ********/
+
+  ol {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center; /* vertical alignment */
+    justify-content: center; /* flex-start value aligns with left of screen */
+    width: 100%;
+    margin: 0 auto;
+    padding: 0.5em 0;
+    list-style: none;
+    font-size: 1rem;
+  }
+
+  .menu-item {
+    padding: 1em 0.5em 2em 0.5em;
+    margin: 0 0 4vh 0;
+    /* don't seem  to work here, maybe overridden elsewhere
+    color: #38c5fd;
+    background-color: #002436; */
+    border: 2px solid #38c5fd;
+    text-align: center;
+    font-size: 1rem;
+    width: 64vw; /* was 64%, changed 1-18-21 */
+    height: 6vh;
+    white-space: nowrap;
+    position: relative;
+    cursor: pointer; /* changes pointer to finger, but arrow cursor returns
+                        once dropdown menu clears */
+  }
+  .menu-item[aria-haspopup="true"] {
+    text-align: center;
+  }
+
+  .menu-item:hover,
+  .menu-item > a:hover,
+  .menu-item:focus-within {
+    color: #38c5fd;
+    background-color: #002436;
+  }
+  .menu-item:hover .sub-menu,
+  .menu-item:hover .sub-menu:hover,
+  .menu-item:focus-within .sub-menu,
+  .menu-item:focus-within .sub-menu:hover {
+    visibility: visible;
+    opacity: 1;
+    display: flex;
+  }
+  .sub-menu {
+    position: absolute;
+    left: 0;
+    margin: 0;
+    visibility: hidden;
+    display: none;
+    opacity: 0;
+  }
+  .sub-menu .menu-item {
+    /* this is the drop down submenu */
+    font-size: 1rem;
+    margin: 0; /* zero on top and bottom needed to remove space between */
+    padding: 1em 0.5em 2em 0.5em;
+    width: 100%;
+    height: 6vh;
+    text-align: center;
+    color: #38c5fd;
+    background-color: #002436;
+    border: 2px solid #38c5fd;
+    z-index: 2;
+  }
+
+  /* using order for vertical placement */
+  .menu-item:nth-child(1) {
+    order: 0;
+    margin-top: 1.2vh; /* creates just a little space below parent (last 1.5vh) */
+  }
+  .menu-item:nth-child(2) {
+    order: 1;
+  }
+  .menu-item:nth-child(3) {
+    order: 2;
+  }
+  .menu-item:nth-child(4) {
+    order: 3;
+  }
+
+  /* headings */
+  h1 {
+    text-align: left;
+    width: 90%;
+  }
+  .h1_Playfair_Display {
+    text-align: left;
+    font-size: 2.25rem;
+  }
+  .gallery .h2_Playfair_Display {
+    text-align: left;
+    font-size: 0.96rem;
+    line-height: calc(1.25 * 0.96rem);
+  }
+  /* gallery */
+  .responsivePicFrame {
+    width: 100%;
+    margin: 4px 2px;
+  }
+  div.picTxt {
+    text-align: left;
+    font-size: 1rem;
+    line-height: calc(1.25 * 1rem);
+  }
+
+  .main,
+  .side {
+    width: 100%;
+    height: 100%;
+    text-align: left;
+  }
+  .header,
+  .footer {
+    max-width: 100%;
+    height: auto;
+    text-align: left;
+    padding: 0; /* values from initial definition were inherited by menu-item sub-menu */
+  }
+  .row_M {
+    font-size: 1.2rem;
+    /* MDN web docs says % line-height can be unreliable
+    percent I calculated as line-height proved this true, wasn't applied */
+    line-height: calc(1.4 * 1.2rem);
+  }
+  .main p {
+    margin: 0 0.5rem 0.75rem 0.5rem;
+    padding: 0 0 1.5rem 0; /* 4 values: top right bottom left padding and margin */
+  }
+  .side {
+    text-align: left;
+    padding: 0;
+  }
+  .side h3 {
+    text-align: center;
+    width: 100%;
+    padding: 0 0;
+    font-size: 1.3rem;
+    margin-top: 4rem;
+  }
+  .side p {
+    text-align: left;
+    margin: 1rem 0 2rem 0;
+  }
+  .side ul li {
+    text-align: left;
+    width: 100%;
+    height: auto;
+    padding: 0.7rem 0;
+    font-size: 1.2rem;
+    line-height: calc(1.25 * 1.2rem);
+  }
+  .footer {
+    text-align: left;
+    padding: 0;
+  }
+  .footer h3 {
+    text-align: center;
+    padding: 0.25rem 0;
+    font-size: 1.1rem;
+  }
+  .footer ul li {
+    text-align: left;
+    width: 100%;
+    padding: 0.5rem 0;
+    font-size: 1rem;
+    line-height: calc(1.25 * 1rem);
+  }
+
+  /* offer cards for smartphone */
+  .offers {
+    width: 100%;
+    height: auto;
+    margin: 0;
+  }
+  .cards {
+    width: 90vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 1.5rem;
+  }
+  .one_card {
+    width: 90vw;
+    height: auto;
+    border-radius: 12px;
+    margin: 1rem;
+  }
+  .one_card .level {
+    font-size: 1.4rem;
+    line-height: calc(1.25 * 1.4rem);
+    font-weight: 600;
+    margin: 0.5rem 1rem 2rem 1rem;
+    border-radius: 10px;
+    position: relative;
+    box-shadow: 8px 8px 10px 6px rgba(33, 42, 124, 0.44);
+  }
+  .one_card .feature {
+    font-weight: 600;
+    font-size: 1.25rem;
+    line-height: calc(1.25 * 1.25rem);
+  }
+  .booking {
+    border-radius: 7px;
+  }
+
+  /* flexbox offer layout */
+  .cards {
+    display: flex;
+    flex-flow: column;
+  }
+  .cards > .one_card {
+    order: 0;
+    width: 100%;
+    z-index: auto; /* needed to correct .level showing on top of menu/submenu */
+  }
+
+  /* Flexbox layout for main and aside */
+  .row_M {
+    display: flex;
+    flex-flow: column;
+  }
+  /* return to document order */
+  .row_M > .main,
+  .row_M > .side {
+    order: 0;
+    width: 100%;
+  }
+
+  /* placing the footer below the offers with flexbox */
+  #wrapper {
+    display: flex;
+    flex-flow: column;
+  }
+  .offers {
+    order: 0;
+    height: 100%;
+  }
+  .footer {
+    order: 1;
+    align-self: flex-end;
+  }
+
+  /* gallery flexbox layout 
+  .photos {
+    flex-flow: column nowrap;
+  }
+  .photos > .responsivePicFrame {
+    order: 0;
+    width: 100%;
+  } */
+} /* end of smart phone media query */
+
+/******* animation for large text heading at the top of  the page *******/
+
+/* note: alternate means go forward through comma separated values on the odd numbers,
+   with the count starting at 1, then the other direction on the even numbers.
+   infinite means loop continuously */
+.glow {
+  text-align: center;
+  -webkit-animation: glow 1s ease-in-out infinite alternate;
+  -moz-animation: glow 1s ease-in-out infinite alternate;
+  animation: glow 1s ease-in-out infinite alternate;
+}
+
+@keyframes glow {
+  from {
+    text-shadow: 0 0 6px rgb(10, 230, 255), 0 0 10px rgb(127, 243, 247),
+      0 0 20px rgb(0, 115, 230), 0 0 30px rgb(0, 115, 230),
+      0 0 40px rgb(0, 115, 230), 0 0 28px #71e1ff, 0 0 36px rgb(0, 115, 230);
+  }
+  to {
+    text-shadow: 0 0 12px rgb(126, 240, 248), 0 0 20px rgb(113, 225, 255),
+      0 0 30px rgb(113, 225, 255), 0 0 26px rgb(113, 225, 255),
+      0 0 38px rgb(113, 225, 255), 0 0 35px rgb(113, 225, 255),
+      0 0 44px rgb(0, 115, 230);
+  }
+}

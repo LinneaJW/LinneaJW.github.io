@@ -1,0 +1,973 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <!-- the following "viewport" tag should be considered mandatory for RWD
+         even if there are no media queries, Google looks for this tag to see
+         if responsive web design is employed on the site (which it should be) -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Aurora Borealis. 
+      Flexbox and grid layouts both in use. Gallery grid layout is 'one line layout' RAM 
+      (Repeat, Auto, Minmax) providing responsive flow. Grid RAM layout rows may have
+      1, 2, 3, 4 or 5 photos based more on variation of screen size than media queries alone.
+      Dropdown menus with color transitions hovering over desktop/tablet menu items. 
+      Translucent rolldown menu on smartphone with dropdowns. Smartphone display has 
+      fontawesome hamburger menu icon and explicitly increased font sizes. Page title has 
+      keyframe animation. Aside links have layered glow effect. Offer cards have border-radius, 
+      box-shadows and scrollbar to handle overflow. Error/confimation icons for form field entry 
+      checks were generated through iconmonstr.com. Form elements have handling/styling for 
+      required, invalid and valid fields, placeholders, reset and submit buttons. Overrode browser 
+      styling to increase size of checkboxes. Textarea grows (transitions) when it gets focus. 
+      Reset and submit buttons have animation when clicked and visual depth. Reset works to clear form, 
+      but submit does not go anywhere. Responsive image display."
+    />
+    <meta
+      name="keywords"
+      content="aurora, aurora borealis, northern lights, southern lights, aurora australis,
+        auroras on other planets, auroras from space, best chance of seeing aurora, 
+        what creates auroras, cause of auroras, causes of auroras"
+    />
+    <meta name="author" content="Linnea Wigren" />
+    <title>Aurora Borealis</title>
+    <link href="css/normalize.css" rel="stylesheet" type="text/css" />
+    <link href="css/aurora.css" rel="stylesheet" type="text/css" />
+
+    <!-- Google font for h1 and h2 Playfair Display -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Google font for body the rest, except the @font-face directive for some script text -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <!-- script handles the hamburger menu dropdown menu for smartphones -->
+    <script src="js/dialog-9.js"></script>
+  </head>
+
+  <body>
+    <div id="wrapper">
+      <!-- page title with css animated glow effect -->
+      <header class="header">
+        <nav class="navbar">
+          <!-- pertains to smartphone hamburger menu icon,  only shown there  -->
+          <div class="menu">
+            <a href="#" aria-label="Open the menu"
+              ><i class="fas fa-bars fa-lg" aria-hidden="true"></i
+            ></a>
+          </div>
+          <!-- this is the menubar for desktop and tablets, hidden for smartphones -->
+          <div class="links">
+            <ul id="dropdown_top">
+              <li><a href="#">Home</a></li>
+              <li>
+                <a href="#">Forecast</a>
+                <ul class="forecast">
+                  <li>
+                    <a
+                      href=" https://www.spaceweatherlive.com/en/auroral-activity/aurora-forecast.html"
+                      target="_blank"
+                      >Space Weather Live</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="https://www.gi.alaska.edu/monitors/aurora-forecast"
+                      target="_blank"
+                      >UAF - Fairbanks</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="https://www.swpc.noaa.gov/products/aurora-30-minute-forecast "
+                      target="_blank"
+                      >NOAA Space Weather</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="https://shuttermuse.com/best-aurora-forecasting-apps-for-northern-lights-photography/"
+                      target="_blank"
+                      >Tracking Apps</a
+                    >
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <a href="#">Resources</a>
+                <ul class="resources">
+                  <li>
+                    <a
+                      target="_blank"
+                      href="https://www.nationalgeographic.org/encyclopedia/aurora/#:~:text=Aurora%20Borealis&text=Auroras%20are%20only%20visible%20at,aurora%20borealis%2C%20or%20northern%20lights."
+                      >National Geographic</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      target="_blank"
+                      href="https://en.wikipedia.org/wiki/Aurora"
+                      >Wikipedia</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      target="_blank"
+                      href="https://now.northropgrumman.com/researchers-discover-different-types-of-aurora-borealis/?utm_source=facebook&utm_campaign=now&utm_medium=video&utm_audience=list_c&utm_content=researchers_discover_types_of_aurora_borealis&utm_format=no_logo&utm_code=SNS-10421&src=SNS-10421&dclid=CPn5gtntoe0CFfwBrQYdXhkJVA"
+                      >New Dune Aurora</a
+                    >
+                  </li>
+                </ul>
+              </li>
+
+              <li><a href="biolumin.html">Bioluminescence</a></li>
+            </ul>
+          </div>
+
+          <!-- for smartphones -->
+          <div class="dialog">
+            <ol>
+              <li class="menu-item"><a class="noKids" href="#">Home</a></li>
+              <!--
+              <li class="menu-item">
+                <a class="noKids" href="biolumin.html">Bioluminescence</a>
+              </li>
+            -->
+              <li class="menu-item">
+                <a href="#" aria-haspopup="true">Forecast</a>
+                <ol class="sub-menu" aria-label="submenu">
+                  <li class="menu-item">
+                    <a
+                      class="noKids"
+                      target="_blank"
+                      href="https://www.spaceweatherlive.com/en/auroral-activity/aurora-forecast.html"
+                      >Space Weather Live</a
+                    >
+                  </li>
+                  <li class="menu-item">
+                    <a
+                      class="noKids"
+                      target="_blank"
+                      href="https://www.gi.alaska.edu/monitors/aurora-forecast"
+                      >UAF - Fairbanks</a
+                    >
+                  </li>
+                  <li class="menu-item">
+                    <a
+                      class="noKids"
+                      target="_blank"
+                      href="https://www.swpc.noaa.gov/products/aurora-30-minute-forecast "
+                      >NOAA Space Weather</a
+                    >
+                  </li>
+                  <li class="menu-item">
+                    <a
+                      class="noKids"
+                      href="https://shuttermuse.com/best-aurora-forecasting-apps-for-northern-lights-photography/"
+                      target="_blank"
+                      >Tracking Apps</a
+                    >
+                  </li>
+                </ol>
+              </li>
+
+              <li class="menu-item resources">
+                <a href="#" aria-haspopup="true">Resources</a>
+                <ol class="sub-menu" aria-label="submenu">
+                  <li class="menu-item">
+                    <a
+                      target="_blank"
+                      class="noKids"
+                      href="https://www.nationalgeographic.org/encyclopedia/aurora/#:~:text=Aurora%20Borealis&text=Auroras%20are%20only%20visible%20at,aurora%20borealis%2C%20or%20northern%20lights."
+                      >National Geographic</a
+                    >
+                  </li>
+                  <li class="menu-item">
+                    <a
+                      target="_blank"
+                      class="noKids"
+                      href="https://en.wikipedia.org/wiki/Aurora"
+                      >Wikipedia</a
+                    >
+                  </li>
+                  <li class="menu-item">
+                    <a
+                      class="noKids"
+                      target="_blank"
+                      href="https://now.northropgrumman.com/researchers-discover-different-types-of-aurora-borealis/?utm_source=facebook&utm_campaign=now&utm_medium=video&utm_audience=list_c&utm_content=researchers_discover_types_of_aurora_borealis&utm_format=no_logo&utm_code=SNS-10421&src=SNS-10421&dclid=CPn5gtntoe0CFfwBrQYdXhkJVA"
+                      >New Dune Aurora</a
+                    >
+                  </li>
+                </ol>
+              </li>
+
+              <li class="menu-item">
+                <a class="noKids" href="biolumin.html">Bioluminescence</a>
+              </li>
+            </ol>
+          </div>
+        </nav>
+
+        <!-- css animated keyframe page title -->
+        <h1 class="h1_Playfair_Display glow">Aurora Borealis</h1>
+        <br />
+      </header>
+
+      <!-- display photos of auroras, <picture> will make layout display responsive -->
+      <section class="gallery">
+        <!-- heading above the pictures -->
+        <h2 class="h2_Playfair_Display">Photographs of Auroras</h2>
+
+        <div class="photos">
+          <!-- pictures and associated text below -->
+          <div class="responsivePicFrame">
+            <div class="luminPic">
+              <picture>
+                <source
+                  srcset="
+                    img/a_green-over-mountains-water-Norway_178359962_600.jpg
+                  "
+                  media="(min-width: 2400px)"
+                />
+                <source
+                  srcset="
+                    img/a_green-over-mountains-water-Norway_178359962_400.jpg
+                  "
+                  media="(min-width: 400px)"
+                />
+                <img
+                  src="img/a_green-over-mountains-water-Norway_178359962_200.jpg"
+                  alt="green aurora over mountains and water in Troms&oslash;, Norway"
+                />
+              </picture>
+              <div class="picTxt">Troms&oslash;, Norway</div>
+            </div>
+            <!-- end of div with class luminPic -->
+          </div>
+          <!-- end of div with class responsivePicFrame -->
+
+          <!-- pictures and associated text below -->
+          <div class="responsivePicFrame">
+            <div class="luminPic">
+              <picture>
+                <source
+                  srcset="img/a_green-red-over-huts-Siberia_229767555_600.jpg"
+                  media="(min-width: 2400px)"
+                />
+                <source
+                  srcset="img/a_green-red-over-huts-Siberia_229767555_400.jpg"
+                  media="(min-width: 400px)"
+                />
+                <img
+                  src="img/a_green-red-over-huts-Siberia_229767555_200.jpg"
+                  alt="green and red aurora over huts in Yakutia, Siberia"
+                />
+              </picture>
+              <div class="picTxt">Yakutia, Siberia over huts</div>
+            </div>
+            <!-- end of div with class luminPic -->
+          </div>
+          <!-- end of div with class responsivePicFrame -->
+
+          <!-- pictures and associated text below -->
+          <div class="responsivePicFrame">
+            <div class="luminPic">
+              <picture>
+                <source
+                  srcset="img/a_blue-over-water-Norway_240232042_600.jpg"
+                  media="(min-width: 2400px)"
+                />
+                <source
+                  srcset="img/a_blue-over-water-Norway_240232042_400.jpg"
+                  media="(min-width: 400px)"
+                />
+                <img
+                  src="img/a_blue-over-water-Norway_240232042_200.jpg"
+                  alt="blue aurora over water, Lofoten islands, Norway"
+                />
+              </picture>
+              <div class="picTxt">Lofoten islands Norway</div>
+            </div>
+            <!-- end of div with class luminPic -->
+          </div>
+          <!-- end of div with class responsivePicFrame -->
+
+          <!-- pictures and associated text below -->
+          <div class="responsivePicFrame">
+            <div class="luminPic">
+              <picture>
+                <source
+                  srcset="img/a_green-purple-over-water_196864228_600.jpg"
+                  media="(min-width: 2400px)"
+                />
+                <source
+                  srcset="img/a_green-purple-over-water_196864228_400.jpg"
+                  media="(min-width: 400px)"
+                />
+                <img
+                  src="img/a_green-purple-over-water_196864228_200.jpg"
+                  alt="green and purple aurora over water"
+                />
+              </picture>
+              <div class="picTxt">Aurora over water</div>
+            </div>
+            <!-- end of div with class luminPic -->
+          </div>
+          <!-- end of div with class responsivePicFrame -->
+
+          <!-- pictures and associated text below -->
+          <div class="responsivePicFrame">
+            <div class="luminPic">
+              <picture>
+                <source
+                  srcset="img/a_green-purple-over-trees_256851420_600.jpg"
+                  media="(min-width: 2400px)"
+                />
+                <source
+                  srcset="img/a_green-purple-over-trees_256851420_400.jpg"
+                  media="(min-width: 400px)"
+                />
+                <img
+                  src="img/a_green-purple-over-trees_256851420_200.jpg"
+                  alt="green and purple aurora over trees"
+                />
+              </picture>
+              <div class="picTxt">Aurora over trees</div>
+            </div>
+            <!-- end of div with class luminPic -->
+          </div>
+          <!-- end of div with class responsivePicFrame -->
+
+          <!-- pictures and associated text below -->
+          <div class="responsivePicFrame">
+            <div class="luminPic">
+              <picture>
+                <source
+                  srcset="
+                    img/a_teal-over-snow-mountains-Norway_317130686_600.jpg
+                  "
+                  media="(min-width: 2400px)"
+                />
+                <source
+                  srcset="
+                    img/a_teal-over-snow-mountains-Norway_317130686_400.jpg
+                  "
+                  media="(min-width: 400px)"
+                />
+                <img
+                  src="img/a_teal-over-snow-mountains-Norway_317130686_200.jpg"
+                  alt="teal aurora over mountains with snow, Lofoten islands, Norway"
+                />
+              </picture>
+              <div class="picTxt">Mountains of Lofoten islands</div>
+            </div>
+            <!-- end of div with class luminPic -->
+          </div>
+          <!-- end of div with class responsivePicFrame -->
+
+          <!-- pictures and associated text below -->
+          <div class="responsivePicFrame">
+            <div class="luminPic">
+              <picture>
+                <source
+                  srcset="
+                    img/a_blue-green-over--Lofoten-islands_194913118_600.jpg
+                  "
+                  media="(min-width: 2400px)"
+                />
+                <source
+                  srcset="
+                    img/a_blue-green-over--Lofoten-islands_194913118_400.jpg
+                  "
+                  media="(min-width: 400px)"
+                />
+                <img
+                  src="img/a_blue-green-over--Lofoten-islands_194913118_200.jpg"
+                  alt="blue-green aurora over Lofoten islands Norway"
+                />
+              </picture>
+              <div class="picTxt">Over Lofoten islands Norway</div>
+            </div>
+            <!-- end of div with class luminPic -->
+          </div>
+          <!-- end of div with class responsivePicFrame -->
+
+          <!-- pictures and associated text below -->
+          <div class="responsivePicFrame">
+            <div class="luminPic">
+              <picture>
+                <source
+                  srcset="img/a_pink-Iceland_298151812_600.jpg"
+                  media="(min-width: 2400px)"
+                />
+                <source
+                  srcset="img/a_pink-Iceland_298151812_400.jpg"
+                  media="(min-width: 400px)"
+                />
+                <img
+                  src="img/a_pink-Iceland_298151812_200.jpg"
+                  alt="pink aurora, Iceland"
+                />
+              </picture>
+              <div class="picTxt">Iceland</div>
+            </div>
+            <!-- end of div with class luminPic -->
+          </div>
+          <!-- end of div with class responsivePicFrame -->
+
+          <!-- pictures and associated text below -->
+          <div class="responsivePicFrame">
+            <div class="luminPic">
+              <picture>
+                <source
+                  srcset="img/a_Lofoten-islands-snow-ice_301829233_600.jpg"
+                  media="(min-width: 2400px)"
+                />
+                <source
+                  srcset="img/a_Lofoten-islands-snow-ice_301829233_400.jpg"
+                  media="(min-width: 400px)"
+                />
+                <img
+                  src="img/a_Lofoten-islands-snow-ice_301829233_200.jpg"
+                  alt="bright aurora over snow, ice and water, Lofoten islands, Norway"
+                />
+              </picture>
+              <div class="picTxt">Lofoten ice, snow and water</div>
+            </div>
+            <!-- end of div with class luminPic -->
+          </div>
+          <!-- end of div with class responsivePicFrame -->
+
+          <!-- pictures and associated text below -->
+          <div class="responsivePicFrame">
+            <div class="luminPic">
+              <picture>
+                <source
+                  srcset="img/a_green-over-glacier-Iceland_202049125_600.jpg"
+                  media="(min-width: 2400px)"
+                />
+                <source
+                  srcset="img/a_green-over-glacier-Iceland_202049125_400.jpg"
+                  media="(min-width: 400px)"
+                />
+                <img
+                  src="img/a_green-over-glacier-Iceland_202049125_200.jpg"
+                  alt="green aurora over Jokulsarlon glacier in Iceland"
+                />
+              </picture>
+              <div class="picTxt">Jokulsarlon glacier Iceland</div>
+            </div>
+            <!-- end of div with class luminPic -->
+          </div>
+          <!-- end of div with class responsivePicFrame -->
+
+          <!-- pictures and associated text below -->
+          <div class="responsivePicFrame">
+            <div class="luminPic">
+              <picture>
+                <source
+                  srcset="img/a_blue-green-over-island_257257019_600.jpg"
+                  media="(min-width: 2400px)"
+                />
+                <source
+                  srcset="img/a_blue-green-over-island_257257019_400.jpg"
+                  media="(min-width: 400px)"
+                />
+                <img
+                  src="img/a_blue-green-over-island_257257019_200.jpg"
+                  alt="blue and green aurora over Lofoten islands Norway"
+                />
+              </picture>
+              <div class="picTxt">Lofoten islands Norway</div>
+            </div>
+            <!-- end of div with class luminPic -->
+          </div>
+          <!-- end of div with class responsivePicFrame -->
+
+          <!-- pictures and associated text below -->
+          <div class="responsivePicFrame">
+            <div class="luminPic">
+              <picture>
+                <source
+                  srcset="img/a_green-above-road-Iceland_199154421_600.jpg"
+                  media="(min-width: 2400px)"
+                />
+                <source
+                  srcset="img/a_green-above-road-Iceland_199154421_400.jpg"
+                  media="(min-width: 400px)"
+                />
+                <img
+                  src="img/a_green-above-road-Iceland_199154421_200.jpg"
+                  alt="green aurora above road in Iceland"
+                />
+              </picture>
+              <div class="picTxt">Road in Iceland</div>
+            </div>
+            <!-- end of div with class luminPic -->
+          </div>
+          <!-- end of div with class responsivePicFrame -->
+
+          <!-- pictures and associated text below -->
+          <div class="responsivePicFrame">
+            <div class="luminPic">
+              <picture>
+                <source
+                  srcset="img/a_bright-pink_150210583_600.jpg"
+                  media="(min-width: 2400px)"
+                />
+                <source
+                  srcset="img/a_bright-pink_150210583_600.jpg"
+                  media="(min-width: 400px)"
+                />
+                <img
+                  src="img/a_bright-pink_150210583_600.jpg"
+                  alt="bright pink aurora over water"
+                />
+              </picture>
+              <div class="picTxt">Aurora over water</div>
+            </div>
+            <!-- end of div with class luminPic -->
+          </div>
+          <!-- end of div with class responsivePicFrame -->
+
+          <!-- pictures and associated text below -->
+          <div class="responsivePicFrame">
+            <div class="luminPic">
+              <picture>
+                <source
+                  srcset="img/a_teal-over-water_323552996_600.jpg"
+                  media="(min-width: 2400px)"
+                />
+                <source
+                  srcset="img/a_teal-over-water_323552996_400.jpg"
+                  media="(min-width: 400px)"
+                />
+                <img
+                  src="img/a_teal-over-water_323552996_200.jpg"
+                  alt="teal aurora over water, Lofoten islands, Norway"
+                />
+              </picture>
+              <div class="picTxt">Lofoten islands Norway</div>
+            </div>
+            <!-- end of div with class luminPic -->
+          </div>
+          <!-- end of div with class responsivePicFrame -->
+
+          <!-- pictures and associated text below -->
+          <div class="responsivePicFrame">
+            <div class="luminPic">
+              <picture>
+                <source
+                  srcset="img/a_purple-green_154318300_600.jpg"
+                  media="(min-width: 2400px)"
+                />
+                <source
+                  srcset="img/a_purple-green_154318300_400.jpg"
+                  media="(min-width: 400px)"
+                />
+                <img
+                  src="img/a_purple-green_154318300_200.jpg"
+                  alt="purple green aurora above treetops and clouds"
+                />
+              </picture>
+              <div class="picTxt">Above treetops and clouds</div>
+            </div>
+            <!-- end of div with class luminPic -->
+          </div>
+          <!-- end of div with class responsivePicFrame -->
+
+          <!-- pictures and associated text below -->
+          <div class="responsivePicFrame">
+            <div class="luminPic">
+              <picture>
+                <source
+                  srcset="img/a_over-earth_286470835_600.jpg"
+                  media="(min-width: 2400px)"
+                />
+                <source
+                  srcset="img/a_over-earth_286470835_600.jpg"
+                  media="(min-width: 400px)"
+                />
+                <img
+                  src="img/a_over-earth_286470835_600.jpg"
+                  alt="aurora view from above the earth"
+                />
+              </picture>
+              <div class="picTxt">View from above the earth</div>
+            </div>
+            <!-- end of div with class luminPic -->
+          </div>
+          <!-- end of div with class responsivePicFrame -->
+        </div>
+        <!-- end of div with class photos -->
+      </section>
+
+      <!-- container holding main story and aside in a row on large enough screens -->
+      <div class="row_M">
+        <!-- main story about auroras and their causes -->
+        <main class="main mainGr">
+          <p class="Montserrat">
+            Aurora borealis was named after both Aurora, Roman goddess of the
+            dawn, and Boreas, Greek god of the north wind. In Finland, the
+            aurora borealis is called revontulet - fox fires. Finnish folklore
+            tells of a magical fox sweeping his tail across the snow and sending
+            sparks up into the sky creating the lights.
+          </p>
+          <p class="Montserrat">
+            Aurora borealis AKA the northern lights are visible in upper
+            latitudes nearest the North Pole. Southern lights AKA aurora
+            australis occur in lower latitudes closer to the South Pole at the
+            same time as the northern lights occur.
+          </p>
+          <p class="Montserrat">
+            Auroras appear in different shapes. They can be a mild glow near the
+            horizon, with undiminished stars visible through the glow. Auroras
+            may be patches or surfaces that look like clouds. Auroras may be
+            arcs curving across the sky. Rays are light and dark color stripes
+            across arcs. Coronas diverge from a single point to cover much of
+            the sky. The most common type of aurora resembles a glowing curtain.
+            A new kind of aurora, named dune, appears like frozen horizontal
+            waves glowing across the sky.
+          </p>
+          <p class="Montserrat">
+            Charged particles from the Sun trapped in Earth’s magnetic field
+            pass through Earth’s upper atmosphere. These particles knock
+            electrons off atoms in the atmosphere, ionizing them to trigger
+            beautiful glowing auroras. Solar particles at the peak of the
+            11-year sunspot cycle create the most frequent auroras. The next
+            solar maximum, when the Sun is at peak activity, is predicted to
+            occur in July 2025.
+          </p>
+          <p class="Montserrat">
+            Altitude and the kind of atoms involved determine aurora colors. If
+            ions strike oxygen atoms high in the atmosphere, the interaction
+            produces a red glow. The most familiar green color occurs as ions
+            strike oxygen at lower altitudes. Reddish and bluish light often in
+            the lower fringes of auroras is produced by ions striking atoms of
+            nitrogen. Ions striking hydrogen and helium atoms can produce blue
+            and purple auroras.
+          </p>
+          <p class="Montserrat">
+            Aurora noise sounds like a hissing or crackling. This noise begins
+            about 230 feet above the Earth's surface. Charged particles in an
+            inversion layer of the atmosphere formed on cold nights cause the
+            noise. When particles from the Sun hit the inversion layer, charged
+            particles discharge making the noise.
+          </p>
+          <p class="Montserrat">
+            Scientists have observed auroras on other planets in our solar
+            system and outside of our solar system. Jupiter, Saturn, Uranus,
+            Neptune, Venus, and Mars have auroras. An extra-solar aurora was
+            discovered in July 2015 over a brown dwarf star. This mainly red
+            aurora was a million times brighter than the northern lights.
+          </p>
+          <p class="Montserrat">
+            To enjoy the dancing northern lights in person requires planning and
+            good luck with getting the weather to cooperate. Aurora forecasts
+            are available. Clear night sky during active sunspot periods is
+            ideal. But every year near equinoxes in March and September, the
+            Earth’s magnetic field lets more solar particles interact with the
+            atmosphere, creating aurora seasons! Iceland is best from late
+            August to early April. Iceland has buubble lodges which are
+            transparent spaces to star gaze and see auroras. Locations in
+            various countries have spectacular ice hotels, offering aurora
+            viewing opportunities themselves or nearby. In the United States
+            Fairbanks Alaska is the best place for aurora viewing. Fairbanks and
+            Yellowknife Canada season is late August to early April. Northern
+            Sweden, Troms&oslash; and the Lofoten islands in Norway, and Finland
+            are all best mid-September to late March. Greenland is best
+            mid-August to late April.
+          </p>
+          <br />
+        </main>
+
+        <aside class="side sideGr">
+          <p class="short_quote">
+            See the aurora light show from the comfort of home! Real-time videos
+            best capture the reality factor of being there. Time-lapse videos
+            show fast dancing lights. See the aurora australis from the
+            International Space Station (ISS) as though you are aboard.
+          </p>
+          <!-- links to videos pertaining to auroras, css glow on focus/hover from layered text shadows -->
+          <h3>Aurora Light Show:</h3>
+          <ul>
+            <li>
+              <a
+                href="https://commons.wikimedia.org/w/index.php?title=File%3AAurora_Australis.ogv"
+                target="_blank"
+                >Aurora australis ISS Expedition 28</a
+              >
+            </li>
+            <li>
+              <a
+                href="https://www.youtube.com/watch?v=izYiDDt6d8s"
+                target="_blank"
+                >Time-lapse Norway</a
+              >
+            </li>
+            <li>
+              <a
+                href="https://www.youtube.com/watch?v=zWlePUUnm1o"
+                target="_blank"
+                >Time-lapse island of Senja Norway</a
+              >
+            </li>
+            <li>
+              <a
+                href="https://www.youtube.com/watch?v=ynNZti899vM"
+                target="_blank"
+                >Time-lapse Lofoten island Norway</a
+              >
+            </li>
+            <li>
+              <a
+                href="https://www.youtube.com/watch?v=3rSqH0lJncI"
+                target="_blank"
+                >Time-lapse Iceland with myths</a
+              >
+            </li>
+            <li>
+              <a
+                href="https://www.youtube.com/watch?v=HlgkGJPhkC0"
+                target="_blank"
+                >Real-time Troms&oslash; Norway</a
+              >
+            </li>
+            <li>
+              <a
+                href="https://www.youtube.com/watch?v=JvcWJggm8RE"
+                target="_blank"
+                >Real-time Iceland</a
+              >
+            </li>
+            <li>
+              <a
+                href="https://www.youtube.com/watch?v=7h23T5FQ9gw"
+                target="_blank"
+                >Real-time Fairbanks, Alaska</a
+              >
+            </li>
+          </ul>
+          <!-- end of light show links -->
+        </aside>
+      </div>
+      <!-- end of class row_M div containing main and aside -->
+
+      <div class="offers">
+        <!-- "card" offers -->
+        <div class="cards">
+          <!-- cards representing offers -->
+          <section class="one_card offer1">
+            <h4 class="level">Fairbanks Visitor</h4>
+            <p class="feature Montserrat">Chase the aurora!</p>
+            <p class="feature Montserrat">Year round aurora ice museum</p>
+            <p class="feature Montserrat">Midnight sun in summer</p>
+            <p class="feature Montserrat">Starting at $3,500</p>
+            <button
+              class="booking"
+              onclick="location.href='https://www.skyscanner.net/news/ice-hotels-12-worlds-coolest-places-stay#:~:text=1.,of%20seeing%20the%20Northern%20Lights';"
+            >
+              Ice Hotels!
+            </button>
+          </section>
+
+          <section class="one_card offer2">
+            <h4 class="level">Scandinavia Sightseer</h4>
+            <p class="feature Montserrat">Chase the aurora!</p>
+            <p class="feature Montserrat">
+              Stay in world&acute;s coolest places
+            </p>
+            <p class="feature Montserrat">Starting at $7,000</p>
+            <button
+              class="booking"
+              onclick="location.href='https://www.skyscanner.net/news/ice-hotels-12-worlds-coolest-places-stay#:~:text=1.,of%20seeing%20the%20Northern%20Lights';"
+            >
+              Ice Hotels!
+            </button>
+          </section>
+
+          <section class="one_card offer3">
+            <h4 class="level">Billionaire Adventurer</h4>
+            <p class="feature Montserrat">See the world with SpaceX!</p>
+            <p class="feature Montserrat">POLAR, SSO, or LEO orbit</p>
+            <p class="feature Montserrat">Rideshare starts at $1M</p>
+            <button
+              class="booking"
+              onclick="location.href='https://www.spacex.com/rideshare/';"
+            >
+              Book Now!
+            </button>
+          </section>
+        </div>
+        <!-- end of cards div -->
+      </div>
+      <!-- end of div class offers -->
+
+      <!-- "mailing list" form -->
+      <div class="container-form">
+        <form
+          class="contact_form"
+          action="#"
+          method="post"
+          name="contact_form"
+          autocomplete="off"
+        >
+          <ul class="flex-outer">
+            <li>
+              <span class="form-heading">
+                Sign Up for Aurora Forecasts and Travel Specials
+              </span>
+            </li>
+            <!-- flex-outer li -->
+            <li>
+              <p>Preferred Destination?</p>
+              <ul class="flex-inner">
+                <li>
+                  <input type="checkbox" id="Fairbanks" name="Fairbanks" />
+                  <label for="Fairbanks">Fairbanks</label>
+                </li>
+                <li>
+                  <input type="checkbox" id="Scandinavia" name="Scandinavia" />
+                  <label for="Scandinavia">Scandinavia</label>
+                </li>
+                <li>
+                  <input type="checkbox" id="Space" name="Space" />
+                  <label for="Space">Space</label>
+                </li>
+              </ul>
+            </li>
+            <!-- flex-outer li -->
+            <li>
+              <label for="first-name">First Name&ast;</label>
+              <input
+                required
+                type="text"
+                id="first-name"
+                name="first-name"
+                placeholder="Enter your first name here"
+                title="Please enter letters of your first name"
+              />
+            </li>
+            <!-- flex-outer li -->
+            <li>
+              <label for="last-name">Last Name&ast;</label>
+              <input
+                required
+                type="text"
+                id="last-name"
+                name="last-name"
+                placeholder="Enter your last name here"
+                title="Please enter your last name"
+              />
+            </li>
+            <!-- flex-outer li -->
+            <li>
+              <label for="email">Email&ast;</label>
+              <input
+                required
+                type="email"
+                id="email"
+                name="email"
+                placeholder="Enter your email here"
+                title="Please enter as address@provider"
+              />
+            </li>
+            <!-- flex-outer li -->
+            <li>
+              <label for="phone">Phone&ast;</label>
+              <input
+                required
+                type="tel"
+                id="phone"
+                name="phone"
+                placeholder="Enter your phone number here"
+                title="Please enter digits, space and hyphen: xxx xxx-xxxx"
+              />
+            </li>
+            <!-- flex-outer li -->
+            <li>
+              <label for="request">Special Requests?</label>
+              <textarea
+                rows="3"
+                id="request"
+                name="request"
+                placeholder="Enter your special request here"
+              ></textarea>
+            </li>
+            <!-- flex-outer li -->
+            <li>
+              <h4>Required fields are marked with an asterisk (&ast;)</h4>
+            </li>
+            <!-- flex-outer li -->
+            <li>
+              <button
+                type="reset"
+                id="reset"
+                name="reset"
+                value="reset"
+                class="btn-reset"
+              >
+                Reset
+              </button>
+            </li>
+            <!-- flex-outer li -->
+            <li>
+              <button
+                type="submit"
+                id="submit"
+                name="submit"
+                value="submit"
+                class="btn-submit"
+              >
+                Submit
+              </button>
+            </li>
+            <!-- flex-outer li -->
+          </ul>
+          <!-- flex-outer -->
+        </form>
+      </div>
+      <!-- container-form -->
+
+      <!-- attribution for aurora photos -->
+      <footer class="footer">
+        <br />
+        <h3>Photo Attributions:</h3>
+        <ul>
+          <li>Vegard / stock.adobe.com, Troms&oslash;, Norway</li>
+          <li>Tagasiapril / stock.adobe.com, Yakutia, Siberia</li>
+          <li>Biletskiy Evgeniy / stock.adobe.com, Lofoten islands Norway</li>
+          <li>BlueOrange Studio / stock.adobe.com, aurora over water</li>
+          <li>Jingshan / stock.adobe.com, aurora over trees</li>
+          <li>
+            den-belitsky / stock.adobe.com, mountains of Lofoten islands Norway
+          </li>
+          <li>den-belitsky / stock.adobe.com, over Lofoten islands Norway</li>
+          <li>Simone / stock.adobe.com, Iceland</li>
+          <li>
+            Biletskiy Evgeniy / stock.adobe.com, Lofoten ice, snow and water,
+            Norway
+          </li>
+          <li>Jamo Images / stock.adobe.com, Jokulsarlon glacier Iceland</li>
+          <li>den-belitsky / stock.adobe.com, Lofoten islands Norway</li>
+          <li>Jamo Images / stock.adobe.com, road in Iceland</li>
+          <li>Simone / stock.adobe.com, aurora over water</li>
+          <li>den-belitsky / stock.adobe.com, Lofoten islands Norway</li>
+          <li>Ihatove_inc / stock.adobe.com, above treetops and clouds</li>
+          <li>Artsiom Petrushenka / stock.adobe.com, view from above earth</li>
+        </ul>
+        <br />
+      </footer>
+      <br />
+    </div>
+    <!-- end of surrounding wrapper div -->
+    <!-- here to improve load time -->
+    <script
+      src="https://kit.fontawesome.com/086afc5146.js"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
